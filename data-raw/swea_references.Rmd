@@ -1,0 +1,27 @@
+---
+title: "References and Plant Communities in 'SWEA-Dataveg'"
+author: "Miguel Alvarez"
+date: "April 12, 2020"
+header-includes:
+  - \usepackage[utf8]{inputenc}
+  - \usepackage[T1]{fontenc}
+  - \usepackage{bibentry}
+  - \usepackage{hyperref}
+  - \nobibliography*
+output:
+  pdf_document:
+    citation_package: natbib
+biblio-style: plain
+bibliography: sweareferences.bib
+papersize: a4
+---
+
+
+**[Alvarez2010a]** \bibentry{Alvarez2010a}
+
+**17. Cynodon plectostachyus comm.** \dotfill 3
+
+\vspace{5mm}
+**[Alvarez2011a]** \bibentry{Alvarez2011a}
+
+**372. Non defined communities** \dotfill 14

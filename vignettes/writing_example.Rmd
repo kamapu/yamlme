@@ -1,0 +1,15 @@
+---
+title: Test for yaml function
+author: Miguel Alvarez
+output: pdf_document
+---
+
+# Introduction
+
+
+
+```{r}
+devtools::install_github("kamapu/yamlme")
+```
+
+

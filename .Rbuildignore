@@ -1,0 +1,10 @@
+^\.dbeaver$
+^\.git$
+^\.settings$
+^\.gitignore$
+^\.project$
+^README-figures$
+^README\.md$
+^README\.Rmd$
+^data-raw$
+^build$

@@ -1,0 +1,25 @@
+Package: yamlme
+Version: 0.0.0.90001
+Encoding: UTF-8
+Title: Flexible Funtion for Writing yaml Headers
+Authors@R:
+	person("Miguel", "Alvarez", email="kamapu78@gmail.com",
+		role=c("aut","cre"), comment=c(ORCID="0000-0003-1500-1834"))
+Depends:
+	R(>= 3.0.0)
+Imports:
+Suggests:
+	devtools,
+	roxygen2,
+	rmarkdown
+Description: This package provide a function for a flexible writing of yaml
+    headers.
+    This function can be implemented in automatic generation of reports by
+    the packages taxlist and vegtable.
+LazyData: true
+Roxygen: list(markdown = TRUE)
+License: GPL (>= 2)
+URL: https://github.com/kamapu/yamlme
+BugReports: https://github.com/kamapu/yamlme/issues
+VignetteBuilder: knitr
+RoxygenNote: 7.1.1

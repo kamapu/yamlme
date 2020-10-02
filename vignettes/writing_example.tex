@@ -1,0 +1,359 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Test for yaml function},
+  pdfauthor={Miguel Alvarez},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\title{Test for yaml function}
+\author{Miguel Alvarez}
+\date{}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+The package \href{https://github.com/kamapu/yamlme}{\texttt{yamlme}} is
+developed to enhance automatic generation of reports and documents from
+different packages, for instance reporting data sources by the package
+\href{https://github.com/kamapu/vegtable}{\texttt{vegtable}} or
+producing check-lists by the package
+\href{https://github.com/kamapu/taxlist}{\texttt{taxlist}}. These
+applications are at the moment tested in an experimental way, for
+instance in the package
+\href{https://github.com/kamapu/vegtable2}{\texttt{vegtable2}} (see
+function \texttt{report\_communities()}).
+
+The function \texttt{write\_yaml()} is at the moment implemented in an
+own package. For details, a brief description will be retrieved by
+\texttt{?write\_yaml}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{devtools}\OperatorTok{::}\KeywordTok{install\_github}\NormalTok{(}\StringTok{"kamapu/yamlme"}\NormalTok{)}
+\KeywordTok{library}\NormalTok{(yamlme)}
+\KeywordTok{library}\NormalTok{(rmarkdown)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{state-of-the-art}{%
+\section{State of the Art}\label{state-of-the-art}}
+
+The idea behind this function is to create Rmd documents with conten by
+using R-code. For instance a PDF document by setting the different yaml
+items as arguments in the function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Docu \textless{}{-}}\StringTok{ }\KeywordTok{write\_yaml}\NormalTok{(}
+        \DataTypeTok{title=}\StringTok{"First Function Version"}\NormalTok{,}
+        \DataTypeTok{author=}\StringTok{"Miguel Alvarez"}\NormalTok{,}
+        \DataTypeTok{output=}\StringTok{"pdf\_document"}\NormalTok{)}
+\KeywordTok{cat}\NormalTok{(Docu)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## ---
+##  title: First Function Version
+##  author: Miguel Alvarez
+##  output: pdf_document
+##  
+## ---
+## 
+## 
+\end{verbatim}
+
+The names of the yaml entries are provided by the user, except for the
+defined arguments \texttt{append}, \texttt{body}, and \texttt{filename},
+which I am assuming are not required in Rmarkdown documents.
+
+To produce a full document, we need to include a body part, an output
+file and render it with rmarkdown.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Docu \textless{}{-}}\StringTok{ }\KeywordTok{write\_yaml}\NormalTok{(}
+        \DataTypeTok{title=}\StringTok{"First Function Version"}\NormalTok{,}
+        \DataTypeTok{author=}\StringTok{"Miguel Alvarez"}\NormalTok{,}
+        \DataTypeTok{output=}\StringTok{"pdf\_document"}\NormalTok{,}
+        \DataTypeTok{body=}\StringTok{"This is a first incursion in Rmarkdown."}\NormalTok{,}
+        \DataTypeTok{filename=}\StringTok{"test\_doc.Rmd"}\NormalTok{)}
+\KeywordTok{render}\NormalTok{(}\StringTok{"test\_doc.Rmd"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{THE IDEA} is to insert the entries by a combination of 1)
+character vectors of length 1 (the previous examples), 2) character
+vectors longer than 1 and 3) complex structures by lists. At the moment
+only alternatives 1 and 2 are implemented, while the challenge with more
+complex entries is to make the formatting in a recursive way and at the
+same time detect the hierarchical rank (depth) to properly set
+indentation.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Docu \textless{}{-}}\StringTok{ }\KeywordTok{write\_yaml}\NormalTok{(}
+        \DataTypeTok{title=}\StringTok{"First Function Version"}\NormalTok{,}
+        \DataTypeTok{author=}\StringTok{"Miguel Alvarez"}\NormalTok{,}
+        \DataTypeTok{output=}\StringTok{"pdf\_document"}\NormalTok{,}
+        \StringTok{"header{-}includes"}\NormalTok{=}\KeywordTok{c}\NormalTok{(}
+                \StringTok{"{-} }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{usepackage[utf8]\{inputenc\}"}\NormalTok{,}
+                \StringTok{"{-} }\CharTok{\textbackslash{}\textbackslash{}}\StringTok{usepackage[T1]\{fontenc\}"}\NormalTok{),}
+        \DataTypeTok{append=}\StringTok{"\# Document written with \textquotesingle{}write\_yaml()\textquotesingle{}"}\NormalTok{,}
+        \DataTypeTok{body=}\StringTok{"This is a first incursion in Rmarkdown."}\NormalTok{,}
+        \DataTypeTok{filename=}\StringTok{"test\_doc.Rmd"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Note that the name of the entry \textbf{header-includes} have to be
+quoted because of the dash, while back-slashes have to be escaped.
+
+\hypertarget{desiderata}{%
+\section{Desiderata}\label{desiderata}}
+
+The next step should be to implement lists as arguments for hierarchical
+entries in the yaml head. For instance
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{output=}\KeywordTok{list}\NormalTok{(}
+        \DataTypeTok{pdf\_file=}\StringTok{"default"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+should write
+
+\begin{verbatim}
+---
+output:
+  pdf_document: default
+---
+\end{verbatim}
+
+A more complex example can be provided, for instance, by multiple
+outputs
+
+\begin{verbatim}
+---
+output:
+  html_document:
+    toc: true
+    toc_float: true
+  word_document:
+    fig_caption: false
+---
+\end{verbatim}
+
+In that case, the argument output should be
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{output=}\KeywordTok{list}\NormalTok{(}
+        \DataTypeTok{html\_document=}\KeywordTok{list}\NormalTok{(}
+                \DataTypeTok{toc=}\StringTok{"true"}\NormalTok{,}
+                \DataTypeTok{toc\_float=}\StringTok{"true"}\NormalTok{),}
+        \DataTypeTok{word\_document=}\KeywordTok{list}\NormalTok{(}
+                \DataTypeTok{fig\_caption=}\StringTok{"false"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+The function is expected to generate automatically the structure of the
+head entry depending on the structure of the list in the function. The
+good news is that we can tweak the (current) limitations of
+\texttt{write\_yaml()} by using the argument \texttt{append}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Docu \textless{}{-}}\StringTok{ }\KeywordTok{write\_yaml}\NormalTok{(}
+        \DataTypeTok{title=}\StringTok{"First Function Version"}\NormalTok{,}
+        \DataTypeTok{author=}\StringTok{"Miguel Alvarez"}\NormalTok{,}
+        \DataTypeTok{append=}\KeywordTok{paste}\NormalTok{(}\KeywordTok{c}\NormalTok{(}
+                        \StringTok{"\# Appended code"}\NormalTok{,}
+                        \StringTok{"output:"}\NormalTok{,}
+                        \StringTok{"  html\_document:"}\NormalTok{,}
+                        \StringTok{"    toc: true"}\NormalTok{,}
+                        \StringTok{"    toc\_float: true"}\NormalTok{,}
+                        \StringTok{"  word\_document:"}\NormalTok{,}
+                        \StringTok{"    fig\_caption: false"}\NormalTok{),}
+                \DataTypeTok{collapse=}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{),}
+        \DataTypeTok{body=}\KeywordTok{paste}\NormalTok{(}\KeywordTok{c}\NormalTok{(}
+                        \StringTok{"\# Breakfast"}\NormalTok{,}
+                        \StringTok{""}\NormalTok{,}
+                        \StringTok{"Just a cup of coffee."}\NormalTok{,}
+                        \StringTok{""}\NormalTok{,}
+                        \StringTok{"\# Midday"}\NormalTok{,}
+                        \StringTok{""}\NormalTok{,}
+                        \StringTok{"{-} A pizza from the Botan Grill"}\NormalTok{,}
+                        \StringTok{"{-} A bottle of coca{-}cola"}\NormalTok{),}
+                \DataTypeTok{collapse=}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{),}
+        \DataTypeTok{filename=}\StringTok{"test\_doc.Rmd"}\NormalTok{)}
+\KeywordTok{render}\NormalTok{(}\StringTok{"test\_doc.Rmd"}\NormalTok{, }\DataTypeTok{output\_format=}\StringTok{"all"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Some possible improvements may include:
+
+\begin{itemize}
+\tightlist
+\item
+  Output object could be defined as ``S3'' class.
+\item
+  Optionally no object will be produced, just a file.
+\item
+  Other alternative is to produce a summarized print in the console,
+  when object is not assigned to an object.
+\end{itemize}
+
+\hypertarget{motivation}{%
+\section{Motivation}\label{motivation}}
+
+Why to do this effort? Our intention is to use the function for the
+``automatic'' generation of reports. For instance, we can define an
+``alias function'' including a template of a document.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{auto\_report \textless{}{-}}\StringTok{ }\ControlFlowTok{function}\NormalTok{(}\DataTypeTok{title=}\StringTok{"Automatic Document"}\NormalTok{,}
+        \DataTypeTok{author=}\StringTok{"Me Robot"}\NormalTok{,}
+        \DataTypeTok{output=}\StringTok{"pdf\_document"}\NormalTok{,}
+        \DataTypeTok{body=}\StringTok{"Hello world!"}\NormalTok{,}
+        \DataTypeTok{filename=}\StringTok{"test\_doc.Rmd"}\NormalTok{, ...) \{}
+    \KeywordTok{write\_yaml}\NormalTok{(}
+            \DataTypeTok{title=}\NormalTok{title,}
+            \DataTypeTok{author=}\NormalTok{author,}
+            \DataTypeTok{output=}\NormalTok{output,}
+            \DataTypeTok{body=}\NormalTok{body,}
+            \DataTypeTok{filename=}\NormalTok{filename,}
+\NormalTok{            ...)}
+\NormalTok{\}}
+\NormalTok{Docu \textless{}{-}}\StringTok{ }\KeywordTok{auto\_report}\NormalTok{()}
+\KeywordTok{render}\NormalTok{(}\StringTok{"test\_doc.Rmd"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+We can then use this function to customize the template by changing the
+values of the arguments and even adding new ones (I guess, it is not
+possible to suppress yaml entries).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Docu \textless{}{-}}\StringTok{ }\KeywordTok{auto\_report}\NormalTok{(}
+        \DataTypeTok{title=}\StringTok{"Human Report"}\NormalTok{,}
+        \DataTypeTok{author=}\StringTok{"Bisrat"}\NormalTok{,}
+        \DataTypeTok{date=}\StringTok{"1.1.2013"}\NormalTok{,}
+        \DataTypeTok{output=}\StringTok{"html\_document"}\NormalTok{,}
+        \DataTypeTok{body=}\KeywordTok{paste}\NormalTok{(}\KeywordTok{c}\NormalTok{(}
+                        \StringTok{"\# Breakfast"}\NormalTok{,}
+                        \StringTok{""}\NormalTok{,}
+                        \StringTok{"Just a cup of coffee."}\NormalTok{,}
+                        \StringTok{""}\NormalTok{,}
+                        \StringTok{"\# Midday"}\NormalTok{,}
+                        \StringTok{""}\NormalTok{,}
+                        \StringTok{"{-} A pizza from the Botan Grill"}\NormalTok{,}
+                        \StringTok{"{-} A bottle of coca{-}cola"}\NormalTok{),}
+                \DataTypeTok{collapse=}\StringTok{"}\CharTok{\textbackslash{}n}\StringTok{"}\NormalTok{))}
+\KeywordTok{render}\NormalTok{(}\StringTok{"test\_doc.Rmd"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Enjoy!
+
+\end{document}

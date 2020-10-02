@@ -21,6 +21,7 @@ For details, a brief description will be retrieved by `?write_yaml`.
 ```{r results="hide", message=FALSE}
 devtools::install_github("kamapu/yamlme")
 library(yamlme)
+library(rmarkdown)
 ```
 
 # State of the Art
@@ -155,8 +156,61 @@ Docu <- write_yaml(
 render("test_doc.Rmd", output_format="all")
 ```
 
+Some possible improvements may include:
+
+- Output object could be defined as "S3" class.
+- Optionally no object will be produced, just a file.
+- Other alternative is to produce a summarized print in the console, when object
+is not assigned to an object.
 
 
+# Motivation
+
+Why to do this effort? Our intention is to use the function for the "automatic"
+generation of reports.
+For instance, we can define an "alias function" including a template of a
+document.
+
+```{r eval=FALSE}
+auto_report <- function(title="Automatic Document",
+		author="Me Robot",
+		output="pdf_document",
+		body="Hello world!",
+		filename="test_doc.Rmd", ...) {
+	write_yaml(
+			title=title,
+			author=author,
+			output=output,
+			body=body,
+			filename=filename,
+			...)
+}
+Docu <- auto_report()
+render("test_doc.Rmd")
+```
+
+We can then use this function to customize the template by changing the values
+of the arguments and even adding new ones (I guess, it is not possible to
+suppress yaml entries).
 
 
+```{r eval=FALSE}
+Docu <- auto_report(
+		title="Human Report",
+		author="Bisrat",
+		date="1.1.2013",
+		output="html_document",
+		body=paste(c(
+						"# Breakfast",
+						"",
+						"Just a cup of coffee.",
+						"",
+						"# Midday",
+						"",
+						"- A pizza from the Botan Grill",
+						"- A bottle of coca-cola"),
+				collapse="\n"))
+render("test_doc.Rmd")
+```
 
+Enjoy!

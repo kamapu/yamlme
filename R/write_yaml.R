@@ -37,12 +37,12 @@ write_yaml <- function(..., append, body="", filename) {
 	# Append
 	if(!missing(append))
 		Head_print <- c(Head_print, "\n", append)
-	OUT <- c("---\n", Head_print, "---\n\n", body, "\n")
+	OUT <- c("---\n", Head_print, "\n---\n\n", body, "\n")
 	# Write output file
 	if(!missing(filename)) {
 		con <- file(filename, "wb")
-		writeBin(charToRaw(Head_print),
-				con, endian="little")
+		writeBin(charToRaw(paste(OUT, collapse="")),
+				con)
 		close(con)
 	}
 	# Return strings

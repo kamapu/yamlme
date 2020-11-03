@@ -46,5 +46,5 @@ write_yaml <- function(..., append, body="", filename) {
 		close(con)
 	}
 	# Return strings
-	return(OUT)
+	invisible(OUT)
 }

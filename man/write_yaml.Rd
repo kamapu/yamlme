@@ -2,27 +2,19 @@
 % Please edit documentation in R/write_yaml.R
 \name{write_yaml}
 \alias{write_yaml}
-\title{Writing yaml headers}
+\title{Write yaml entries}
 \usage{
-write_yaml(..., append, body = "", filename)
+write_yaml(x, ...)
 }
 \arguments{
-\item{...}{Named arguments to be inserted in the yaml head. At the moment
-only vectors are implemented (length 1 or higher), but the concept may
-also consider lists for complex tags.}
+\item{x}{Either a vector or a list.}
 
-\item{append}{A piece of code to be appended in the head. For instance, it
-can contain commented code.}
+\item{...}{Further arguments passed among methods.}
 
-\item{body}{The content of the document that will be inserted after the head.}
-
-\item{filename}{A character value with the name of the file to be written
-(usually a *.Rmd file). If missing, no file will be written by the
-function.}
+\item{depth}{Hierarchical depth in lists.}
 }
 \description{
-This function generates yaml headers and Rmarkdown files by including the
-settings as arguments of the function.
-Comments and pieces of header can be also added through the argument
-\code{append}.
+Internal function for a proper rendering of yaml entry classes as arguments
+in \code{\link[=write_rmd]{write_rmd()}}.
 }
+\keyword{internal}

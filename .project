@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
 	<name>yamlme</name>
-	<comment></comment>
+	<comment>
+R package for generating yaml heads and r-markdown documents by using
+R-functions.
+	</comment>
 	<projects>
 	</projects>
 	<buildSpec>

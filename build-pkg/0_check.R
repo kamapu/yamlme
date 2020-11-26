@@ -5,7 +5,7 @@
 
 # Needed packages
 library(devtools)
-#library(covr)
+library(covr)
 #library(goodpractice)
 library(rmarkdown)
 library(knitr)
@@ -14,8 +14,12 @@ library(pkgdown)
 # Document package
 document()
 
+# At first commit
+## use_travis()
+use_coverage(type=c("codecov"))
+
 # Report coverage
-## report()
+report()
 
 # Carry out the tests
 ## test()
@@ -30,7 +34,7 @@ document()
 ## gp()
 
 # Build package
-pkg_loc <- build(path="build")
+pkg_loc <- build(path="build-pkg")
 
 # Test the package
 ## Sys.setenv(LANG="en_US.iso88591")
@@ -38,10 +42,13 @@ Sys.setlocale("LC_ALL", "en_US.iso88591")
 Sys.setenv('_R_CHECK_SYSTEM_CLOCK_' = 0)
 check_built(path=pkg_loc)
 
-# Build manual
-build_manual(path="build")
+# Render readme-file.
+render("README.Rmd")
 
 # After check ------------------------------------------------------------------
+
+# Build manual
+build_manual(path="build-pkg")
 
 # Install the package
 ## install()

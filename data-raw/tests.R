@@ -7,6 +7,8 @@
 library(devtools)
 install_github("kamapu/yamlme")
 
+library(yamlme)
+
 # Test write_rmd
 z <- write_rmd(name="Miguel Alvarez")
 cat(z)

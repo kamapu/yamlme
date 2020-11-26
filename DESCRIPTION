@@ -8,11 +8,14 @@ Authors@R:
 Depends:
 	R(>= 3.0.0)
 Imports:
-    knitr
+    knitr,
+    methods,
+    testthat
 Suggests:
-	devtools,
-	roxygen2,
-	rmarkdown
+    devtools,
+    roxygen2,
+    rmarkdown,
+    covr
 Description: This package provide a function for a flexible writing of yaml
     headers.
     This function can be implemented in automatic generation of reports by

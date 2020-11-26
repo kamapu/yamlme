@@ -3,10 +3,10 @@
 ^\.settings$
 ^\.gitignore$
 ^\.project$
-^README-figures$
 ^README\.md$
 ^README\.Rmd$
 ^data-raw$
-^build$
 ^build-pkg$
 ^LICENSE$
+^\.travis\.yml$
+^codecov\.yml$

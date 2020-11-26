@@ -3,5 +3,15 @@
 language: r
 cache: packages
 
+r:
+  - oldrel
+  - release
+  - devel
+
+r_check_args: "--as-cran"
+
+warnings_are_errors: false
+
 after_success:
     - Rscript -e 'covr::codecov()'
+    

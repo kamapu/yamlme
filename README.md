@@ -21,3 +21,5 @@ For installing this package use `devtools`:
 library(devtools)
 install_github("kamapu/yamlme")
 ```
+
+Documentation under construction.

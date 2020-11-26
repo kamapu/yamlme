@@ -31,4 +31,4 @@ library(devtools)
 install_github("kamapu/yamlme")
 ```
 
-
+Documentation under construction.

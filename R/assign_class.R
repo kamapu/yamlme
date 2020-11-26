@@ -26,14 +26,14 @@ assign_class <- function(x) {
 	return(x)
 }
 
-#' @exportClass vector_s
+#' @keywords internal
 #' 
 setOldClass(c("vector_s", "character"))
 
-#' @exportClass vector_vl
+#' @keywords internal
 #' 
 setOldClass(c("vector_vl", "character"))
 
-#' @exportClass vector_d
+#' @keywords internal
 #' 
 setOldClass(c("vector_d", "character"))

@@ -16,7 +16,7 @@ document()
 
 # At first commit
 ## use_travis()
-use_coverage(type=c("codecov"))
+## use_coverage(type=c("codecov"))
 
 # Report coverage
 report()

@@ -13,6 +13,7 @@ Imports:
     testthat
 Suggests:
     devtools,
+    distill,
     roxygen2,
     rmarkdown,
     covr

@@ -40,3 +40,7 @@ write_rmd <- function(..., append, body="", filename) {
 	class(OUT) <- c("rmd_doc", "character")
 	invisible(OUT)
 }
+
+#' @keywords internal
+#' 
+setOldClass("rmd_doc")

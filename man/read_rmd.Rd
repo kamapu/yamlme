@@ -21,3 +21,9 @@ A character vector that can be use as \code{body} in function \code{\link[=write
 This function reads Rmd files into character vectors pasting a line break
 at the end of each line.
 }
+\examples{
+\dontrun{
+Doc <- read_rmd(file.path(path.package("yamlme"), "taxlistjourney.Rmd"))
+}
+
+}

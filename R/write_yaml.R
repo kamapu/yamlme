@@ -57,12 +57,18 @@ write_yaml.list <- function(x, depth=1) {
 				if(class(x[[i]][[j]]) == "list") {
 					OUT <- c(OUT, paste0("  ", j, ":\n"))
 					for(k in names(x[[i]][[j]])) {
-						# replace this part by if else for next depth
-						temp <- write_yaml(assign_class(x[[i]][[j]][[k]]),
-								depth=depth + 2)
-						OUT <- c(OUT, paste0("    ", k, ": ", temp[1]),
-						        temp[-1])
-						## OUT <- c(OUT, paste0("    ", temp))
+						if(class(x[[i]][[j]][[k]]) == "list") {
+							OUT <- c(OUT, paste0("    ", k, ":\n"))
+							for(l in names(x[[i]][[j]][[k]])) {
+								# replace this part by if else for next depth
+								temp <- write_yaml(assign_class(x[[i]][[j]][[
+														k]][[l]]),
+										depth=depth + 4)
+								OUT <- c(OUT, paste0("      ", l, ": ",
+												temp[1]), temp[-1])
+							## OUT <- c(OUT, paste0("    ", temp))
+							}
+						}
 					}
 				} else {
 					temp <- write_yaml(assign_class(x[[i]][[j]]),

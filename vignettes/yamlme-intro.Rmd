@@ -58,6 +58,18 @@ cat(write_rmd(description = c("|",
 						"in the head.")))
 ```
 
+A similar way is applied in the case of the entries for the element `vignette`
+in a vignette document.
+
+```{r}
+cat(write_rmd(
+				title = "Introduction to this package",
+				vignette = c(">",
+						paste0("%\\VignetteIndexEntry{", title, "}"),
+						"%\\VignetteEngine{knitr::rmarkdown}",
+						"%\\VignetteEncoding{UTF-8}")))
+```
+
 A further class is used for entries starting with a dash symbol.
 
 ```{r}

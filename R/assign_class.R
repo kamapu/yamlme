@@ -16,7 +16,7 @@ assign_class <- function(x) {
 		if(length(x) == 1)
 			class(x) <- c("vector_s", "character")
 		# vertical line vector
-		if(length(x) > 1 & x[1] == "|")
+		if(length(x) > 1 & (x[1] == "|" | x[1] == ">"))
 			class(x) <- c("vector_vl", "character")
 		# dash vector
 		if(length(x) > 1 & substr(x[1], 1, 1) == "-")

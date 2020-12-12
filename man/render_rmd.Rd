@@ -39,6 +39,7 @@ file names but also enables the possibility of rendering from objects created
 by \code{\link[=write_rmd]{write_rmd()}}.
 }
 \examples{
+\dontrun{
 ## copy example to your working directory
 filename <- "taxlistjourney.Rmd"
 file.copy(from=file.path(path.package("yamlme"), filename), to=filename)
@@ -53,5 +54,6 @@ rmd_document <- write_rmd(title="my title", author="my name",
     output="html_document", body=text_document)
 
 render_rmd(rmd_document, output_file="example2")
+}
 
 }

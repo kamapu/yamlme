@@ -1,0 +1,154 @@
+---
+title: "Setting elements in yaml headers for r-markdown documents"
+author: Miguel Alvarez
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Setting elements in yaml headers for r-markdown documents}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+The package `yamlme` targets to write yaml-heads and even full r-markdown
+documents from plain R codes. The tasks of this package are the automatic
+generation of reports from R sessions as well as producing templates that can
+be shared as R-functions.
+
+# Installing yamlme
+
+To install this package from its **GitHub** repository, you can use
+the package `devtools`.
+
+```{r eval = FALSE}
+library(devtools)
+install_github("kamapu/yamlme", build_vignettes = TRUE)
+```
+
+To start a new session, load the package:
+
+```{r}
+library(yamlme)
+```
+
+# Writting yaml heads
+
+Several internal funcions and classes are implemented in this package, while
+the only visible result will be produced by the function `write_rmd()`.
+Each entry in the yaml head can be provided as custom argument in this
+function, where at the moment four different categories are defined.
+
+A vector of lentght 1 is the basing entry for a head, for instance:
+
+```{r}
+cat(write_rmd(title = "My first document"))
+```
+
+Some applications may also require a description (or abstract) as in the case of
+documents rendered by `distill`.
+To add a description in post you start with a vertical line as first element in
+the vector.
+
+```{r}
+cat(write_rmd(description = c("|",
+						"This text starts with a vertical line",
+						"and will be thus used as a description",
+						"in the head.")))
+```
+
+A further class is used for entries starting with a dash symbol.
+
+```{r}
+cat(write_rmd(author=c("- name: Miguel Alvarez",
+						"url: https://kamapu.github.io/",
+						"- name: Bisrat H. Gebrekhidan")))
+```
+
+And finaly, nested entries can be provided as lists.
+
+```{r}
+cat(write_rmd(output=list(pdf_document="default")))
+```
+
+# A full example
+
+With the function `write_rmd()` you can create a full r-markdown document. You
+cam either assign the result to an object or write it in a file, or both.
+For it, the parameters `filename` (name and path for the output file), `body`
+(body of the document as caracter vector), and `append` (appended blocks in
+yaml-head, for instance comments) are suitable.
+
+```{r}
+my_document <- write_rmd(title = "Mi First Document", author = "My Name",
+		output = "html_document", append = "# This is a comment in head",
+		body = txt_body(
+				"# Starting a working day",
+				"",
+				"At the beginning of every day I will do:",
+				"",
+				"- Say everyone \"Good morning!\"",
+				"- Start the coffe mashine",
+				"- Start the computer",
+				"- Read mails"))
+cat(my_document)
+```
+
+In this case we can render the document directly from the resulting object.
+
+```{r eval = FALSE}
+render_rmd(input = my_document, output_file = "my_document")
+```
+
+# Creating a template in a function
+
+A template in `yamlme` can be defined as a function setting default arguments
+that will be passed to `write_rmd()`.
+
+```{r}
+my_template <- function(
+		title = "My Awesome Document",
+		author = "My Self",
+		output = "html_document",
+		body = txt_body(
+				"# Introduction",
+				"",
+				"This is just an example."),
+		...) {
+	write_rmd(
+			title = title,
+			author = author,
+			output = output,
+			body = body,
+			...)
+}
+```
+
+Thus we can just call this function without setting any argument to produce the
+template.
+
+```{r}
+cat(my_template())
+```
+
+We can also modify the template to adapt the output or the template of the
+document.
+
+```{r}
+cat(my_template(
+				output = "pdf_document",
+				append = "# this is a modified version"
+))
+```
+
+Note that the original template will be rendered as a HTML document, while the
+second alternative will produce a PDF document.
+
+```{r eval = FALSE}
+# Modify only the title of the template and render
+render_rmd(my_template(title = "Example HTML document"))
+
+# Modify title and output format before rendering
+render_rmd(my_template(title = "Example PDF document", output = "pdf_document"))
+```

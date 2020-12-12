@@ -2,14 +2,18 @@
 % Please edit documentation in R/read_rmd.R
 \name{read_rmd}
 \alias{read_rmd}
+\alias{txt_body}
 \title{Read R-markdown Documents}
 \usage{
 read_rmd(file, ..., skip_head = TRUE)
+
+txt_body(...)
 }
 \arguments{
 \item{file}{Character value indicating the path and the name to the Rmd file.}
 
-\item{...}{Arguments passed to \code{\link[=readLines]{readLines()}}.}
+\item{...}{Arguments passed by \code{read_rmd()} to \code{\link[=readLines]{readLines()}}.
+In \code{txt_body()} they are character values passed to \code{c()}.}
 
 \item{skip_head}{Logical value indicating whether the yaml head should be
 skip or not.}
@@ -18,8 +22,9 @@ skip or not.}
 A character vector that can be use as \code{body} in function \code{\link[=write_rmd]{write_rmd()}}.
 }
 \description{
-This function reads Rmd files into character vectors pasting a line break
-at the end of each line.
+The function \code{read_rmd()} reads Rmd files into character vectors pasting a
+line break at the end of each line.
+The function \code{txt_body()} will do the same to one or more character vectors.
 }
 \examples{
 \dontrun{

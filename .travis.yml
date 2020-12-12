@@ -10,6 +10,9 @@ r:
 
 r_check_args: "--as-cran"
 
+r_github_packages:
+  - r-lib/gert
+
 warnings_are_errors: false
 
 after_success:

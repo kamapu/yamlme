@@ -1,5 +1,5 @@
 Package: yamlme
-Version: 0.0.0.90002
+Version: 0.1.0
 Encoding: UTF-8
 Title: Flexible Funtion for Writing yaml Headers
 Authors@R: c(

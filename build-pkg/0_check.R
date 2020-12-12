@@ -42,16 +42,7 @@ Sys.setlocale("LC_ALL", "en_US.iso88591")
 Sys.setenv('_R_CHECK_SYSTEM_CLOCK_' = 0)
 check_built(path=pkg_loc)
 
-# Render readme-file.
-render("README.Rmd")
-
 # After check ------------------------------------------------------------------
-
-# Build manual
-build_manual(path="build-pkg")
-
-# Install the package
-## install()
 
 # Render readme-file.
 render("README.Rmd")
@@ -61,13 +52,14 @@ usethis::use_pkgdown()
 pkgdown::build_site(preview=FALSE)
 
 # Copy site
-r_path <- gsub("/taxlist", "", getwd())
-pkg_path <- file.path(r_path, "kamapu.github.io", "rpkg")
-
-file.copy("docs", pkg_path, recursive=TRUE)
+file.copy("docs", "../kamapu.github.io/rpkg", recursive = TRUE)
 unlink("docs", recursive=TRUE)
+file.rename("../kamapu.github.io/rpkg/docs", "../kamapu.github.io/rpkg/yamlme")
 
-unlink(file.path(pkg_path, "taxlist"), recursive=TRUE)
-file.rename(file.path(pkg_path, "docs"), file.path(pkg_path, "taxlist"))
+render_site("../kamapu.github.io/")
 
-file.copy("README-figures", file.path(pkg_path, "taxlist"), recursive=TRUE)
+# Build manual
+## build_manual(path="build-pkg")
+
+# Install the package
+## install()

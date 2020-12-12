@@ -20,7 +20,8 @@ can contain commented code.}
 function.}
 }
 \value{
-A character vector of class 'rmd_doc' and, by request, an Rmd file.
+A character vector of class \code{rmd_doc} and, if argument set for parameter
+\code{filename}, an Rmd file.
 }
 \description{
 This function generates yaml headers and Rmarkdown files by including the

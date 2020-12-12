@@ -19,7 +19,8 @@ In \code{txt_body()} they are character values passed to \code{c()}.}
 skip or not.}
 }
 \value{
-A character vector that can be use as \code{body} in function \code{\link[=write_rmd]{write_rmd()}}.
+A character vector that can be use as argument for the parameter \code{body} in
+the function \code{\link[=write_rmd]{write_rmd()}}.
 }
 \description{
 The function \code{read_rmd()} reads Rmd files into character vectors pasting a

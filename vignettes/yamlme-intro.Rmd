@@ -59,13 +59,14 @@ cat(write_rmd(description = c("|",
 ```
 
 A similar way is applied in the case of the entries for the element `vignette`
-in a vignette document.
+in a vignette document, hier for convenience recycling the tile of the vignette.
 
 ```{r}
+the_title <- "Introduction to this package"
 cat(write_rmd(
-				title = "Introduction to this package",
+				title = the_title,
 				vignette = c(">",
-						paste0("%\\VignetteIndexEntry{", title, "}"),
+						paste0("%\\VignetteIndexEntry{", the_title, "}"),
 						"%\\VignetteEngine{knitr::rmarkdown}",
 						"%\\VignetteEncoding{UTF-8}")))
 ```

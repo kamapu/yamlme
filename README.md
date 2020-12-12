@@ -19,7 +19,9 @@ For installing this package use `devtools`:
 
 ``` r
 library(devtools)
-install_github("kamapu/yamlme")
+install_github("kamapu/yamlme", build_vignettes = TRUE)
 ```
 
-Documentation under construction.
+## Write a template and modify it
+
+Example from vignette.

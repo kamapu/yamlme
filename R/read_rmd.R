@@ -15,7 +15,8 @@
 #'     skip or not.
 #' 
 #' @return 
-#' A character vector that can be use as `body` in function [write_rmd()].
+#' A character vector that can be use as argument for the parameter `body` in
+#' the function [write_rmd()].
 #' 
 #' @examples
 #' \dontrun{

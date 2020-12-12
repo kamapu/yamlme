@@ -18,7 +18,8 @@
 #'     function.
 #' 
 #' @return 
-#' A character vector of class 'rmd_doc' and, by request, an Rmd file.
+#' A character vector of class `rmd_doc` and, if argument set for parameter
+#' `filename`, an Rmd file.
 #' 
 #' @export write_rmd
 #' 

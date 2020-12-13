@@ -84,5 +84,5 @@ Other R-packages with similar tasks are
 [`ymlthis`](https://github.com/r-lib/ymlthis), where the later is quite
 close but uses a different approach defining separated functions for
 different elements, while `yamlme` uses a single function, which is
-quite open, writting the head in accordance to the argumnet provided in
-custom paramaters.
+quite open, writing the head in accordance to the argument provided in
+custom parameters. In addition, yamlme does not have any dependency.

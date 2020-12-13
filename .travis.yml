@@ -10,8 +10,10 @@ r:
 
 r_check_args: "--as-cran"
 
-r_github_packages:
-  - r-lib/gert
+addons:
+  apt:
+    packages:
+      - libgit2-dev
 
 warnings_are_errors: false
 

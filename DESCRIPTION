@@ -1,7 +1,7 @@
 Package: yamlme
 Version: 0.1.0
 Encoding: UTF-8
-Title: Flexible Funtion for Writing yaml Headers
+Title: Flexible Funtion for Writing Yaml Headers
 Authors@R: c(
     person("Miguel", "Alvarez", email="kamapu78@gmail.com",
         role=c("aut","cre"), comment=c(ORCID="0000-0003-1500-1834")),

@@ -54,6 +54,7 @@ pkgdown::build_site(preview=FALSE)
 # Copy site
 file.copy("docs", "../kamapu.github.io/rpkg", recursive = TRUE)
 unlink("docs", recursive=TRUE)
+unlink("../kamapu.github.io/rpkg/yamlme", recursive=TRUE)
 file.rename("../kamapu.github.io/rpkg/docs", "../kamapu.github.io/rpkg/yamlme")
 
 render_site("../kamapu.github.io/")

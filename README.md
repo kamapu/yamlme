@@ -22,7 +22,13 @@ library(devtools)
 install_github("kamapu/yamlme", build_vignettes = TRUE)
 ```
 
-## Create and modify a document
+After installing the package have to be loaded in the current R-session.
+
+``` r
+library(yamlme)
+```
+
+## Create a document
 
 This package aims to save documents with their respective settings
 (yaml-head) in R-objects.
@@ -70,3 +76,13 @@ For more details, take a look on the vignette.
 ``` r
 vignette("yamlme-intro")
 ```
+
+## Similar packages
+
+Other R-packages with similar tasks are
+[`yaml`](https://github.com/viking/r-yaml/) and
+[`ymlthis`](https://github.com/r-lib/ymlthis), where the later is quite
+close but uses a different approach defining separated functions for
+different elements, while `yamlme` uses a single function, which is
+quite open, writting the head in accordance to the argumnet provided in
+custom paramaters.

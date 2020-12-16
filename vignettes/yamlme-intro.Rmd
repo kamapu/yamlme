@@ -43,7 +43,8 @@ function, where at the moment four different categories are defined.
 A vector of lentght 1 is the basing entry for a head, for instance:
 
 ```{r}
-cat(write_rmd(title = "My first document"))
+my_document <- write_rmd(title = "My first document")
+my_document
 ```
 
 Some applications may also require a description (or abstract) as in the case of
@@ -52,10 +53,11 @@ To add a description in post you start with a vertical line as first element in
 the vector.
 
 ```{r}
-cat(write_rmd(description = c("|",
-						"This text starts with a vertical line",
-						"and will be thus used as a description",
-						"in the head.")))
+my_document <- write_rmd(description = c("|",
+				"This text starts with a vertical line",
+				"and will be thus used as a description",
+				"in the head."))
+my_document
 ```
 
 A similar way is applied in the case of the entries for the element `vignette`
@@ -63,26 +65,29 @@ in a vignette document, hier for convenience recycling the tile of the vignette.
 
 ```{r}
 the_title <- "Introduction to this package"
-cat(write_rmd(
-				title = the_title,
-				vignette = c(">",
-						paste0("%\\VignetteIndexEntry{", the_title, "}"),
-						"%\\VignetteEngine{knitr::rmarkdown}",
-						"%\\VignetteEncoding{UTF-8}")))
+my_document <- write_rmd(
+		title = the_title,
+		vignette = c(">",
+				paste0("%\\VignetteIndexEntry{", the_title, "}"),
+				"%\\VignetteEngine{knitr::rmarkdown}",
+				"%\\VignetteEncoding{UTF-8}"))
+my_document
 ```
 
 A further class is used for entries starting with a dash symbol.
 
 ```{r}
-cat(write_rmd(author=c("- name: Miguel Alvarez",
-						"url: https://kamapu.github.io/",
-						"- name: Bisrat H. Gebrekhidan")))
+my_document <- write_rmd(author=c("- name: Miguel Alvarez",
+				"url: https://kamapu.github.io/",
+				"- name: Bisrat H. Gebrekhidan"))
+my_document
 ```
 
 And finaly, nested entries can be provided as lists.
 
 ```{r}
-cat(write_rmd(output=list(pdf_document="default")))
+my_document <- write_rmd(output=list(pdf_document="default"))
+my_document
 ```
 
 # A full example
@@ -105,7 +110,7 @@ my_document <- write_rmd(title = "Mi First Document", author = "My Name",
 				"- Start the coffe mashine",
 				"- Start the computer",
 				"- Read mails"))
-cat(my_document)
+my_document
 ```
 
 In this case we can render the document directly from the resulting object.
@@ -142,14 +147,14 @@ Thus we can just call this function without setting any argument to produce the
 template.
 
 ```{r}
-cat(my_template())
+(my_template())
 ```
 
 We can also modify the template to adapt the output or the template of the
 document.
 
 ```{r}
-cat(my_template(
+(my_template(
 				output = "pdf_document",
 				append = "# this is a modified version"
 ))

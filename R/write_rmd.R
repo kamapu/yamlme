@@ -24,21 +24,23 @@
 #' @export write_rmd
 #' 
 write_rmd <- function(..., append, body="", filename) {
-	Head <- write_yaml(list(...))
+	OUT <- list()
+	OUT$header <- list(...)
 	# Append
 	if(!missing(append))
-		Head <- c(Head, paste0(append, "\n"))
-	OUT <- c("---\n", Head, "---\n\n", body, "\n")
+		OUT$append <- txt_body(append) else OUT$append <- ""
+	OUT$body <- body
 	# Write output file
 	if(!missing(filename)) {
 		con <- file(filename, "wb")
-		writeBin(charToRaw(paste(OUT, collapse="")),
+		writeBin(charToRaw(paste0(c("---\n", write_yaml(OUT$header), OUT$append,
+										"---\n\n", OUT$body, "\n"),
+								collapse="")),
 				con)
 		close(con)
 	}
 	# Return strings
-	names(OUT) <- NULL
-	class(OUT) <- c("rmd_doc", "character")
+	class(OUT) <- c("rmd_doc", "list")
 	invisible(OUT)
 }
 

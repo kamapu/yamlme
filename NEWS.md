@@ -4,6 +4,7 @@ yamlme 0.1.1
 ### New Features
 
 * A `print()` method for `rmd_doc` objects.
+* An `update()` method for `rmd_doc` objects.
 
 ### Improvements
 

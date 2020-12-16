@@ -8,11 +8,12 @@
 #' Comments and pieces of header can be also added through the argument
 #' `append`.
 #' 
-#' @param ... Named arguments to be inserted in the yaml head. These arguments
+#' @param ... Named arguments to be inserted in the YAML header. These arguments
 #'     may be inserted either as vectors or lists.
-#' @param append A piece of code to be appended in the head. For instance, it
+#' @param append A piece of code to be appended in the header. For instance, it
 #'     can contain commented code.
-#' @param body The content of the document that will be inserted after the head.
+#' @param body The content of the document that will be inserted after the
+#'     header.
 #' @param filename A character value with the name of the file to be written
 #'     (usually a *.Rmd file). If missing, no file will be written by the
 #'     function.
@@ -23,7 +24,7 @@
 #' 
 #' @export write_rmd
 #' 
-write_rmd <- function(..., append, body="", filename) {
+write_rmd <- function(..., append, body = "", filename) {
 	OUT <- list()
 	OUT$header <- list(...)
 	# Append

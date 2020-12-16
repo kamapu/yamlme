@@ -3,6 +3,7 @@
 S3method(print,rmd_doc)
 S3method(render_rmd,character)
 S3method(render_rmd,rmd_doc)
+S3method(update,rmd_doc)
 export(read_rmd)
 export(render_rmd)
 export(txt_body)

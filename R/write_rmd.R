@@ -1,10 +1,10 @@
 #' @name write_rmd
 #' 
-#' @title Writing yaml headers
+#' @title Writing R-Markdown Documents
 #' 
 #' @description 
-#' This function generates yaml headers and Rmarkdown files by including the
-#' settings as arguments of the function.
+#' This function generates YAML headers and R-Markdown documents by including
+#' the settings as arguments of the function.
 #' Comments and pieces of header can be also added through the argument
 #' `append`.
 #' 
@@ -15,12 +15,24 @@
 #' @param body The content of the document that will be inserted after the
 #'     header.
 #' @param filename A character value with the name of the file to be written
-#'     (usually a *.Rmd file). If missing, no file will be written by the
+#'     (usually a *.Rmd file). If missing, no file will be written by this
 #'     function.
 #' 
 #' @return 
 #' A character vector of class `rmd_doc` and, if argument set for parameter
 #' `filename`, an Rmd file.
+#' 
+#' @examples 
+#' \dontrun{
+#' my_document <- write_rmd(
+#' 		title = "Sample Document", author = "Miguel Alavarez",
+#' 		output = "html_document",
+#' 		body = txt_body(
+#' 				"# Intro",
+#' 				"",
+#' 				"This is just an example."))
+#' my_document
+#' }
 #' 
 #' @export write_rmd
 #' 
@@ -29,7 +41,7 @@ write_rmd <- function(..., append, body = "", filename) {
 	OUT$header <- list(...)
 	# Append
 	if(!missing(append))
-		OUT$append <- txt_body(append) else OUT$append <- ""
+		OUT$append <- txt_body(append) else OUT$append <- NULL
 	OUT$body <- body
 	# Write output file
 	if(!missing(filename)) {

@@ -51,7 +51,6 @@ my_document
 #> author: My Name
 #> output: html_document
 #> # This is a comment in head
-#> 
 #> ---
 #> 
 #> # Starting a working day

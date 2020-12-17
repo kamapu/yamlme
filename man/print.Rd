@@ -19,5 +19,23 @@ display. Longer documents will be truncated.}
 A display of the resulting R-Markdown document in the console.
 }
 \description{
-Quick display for \code{rmd_doc} objects.
+Quick display for \code{rmd_doc} objects. This method also defines the way how
+objects are displayed in the console.
+}
+\examples{
+
+## Create a new document
+my_document <- write_rmd(
+		title = "A journey in rOpenSci",
+		author = "Miguel Alvarez",
+		output = "html_document",
+		body = read_rmd(file.path(path.package("yamlme"),
+						"taxlistjourney.Rmd")))
+my_document
+
+\dontrun{
+## Render the document
+render_rmd(my_document, "taxlistjourney")
+}
+
 }

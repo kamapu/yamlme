@@ -20,7 +20,16 @@
 #' 
 #' @examples
 #' \dontrun{
-#' Doc <- read_rmd(file.path(path.package("yamlme"), "taxlistjourney.Rmd"))
+#' ## Read pre-installed example
+#' ex_document <- read_rmd(file.path(path.package("yamlme"),
+#'     "taxlistjourney.Rmd"))
+#' 
+#' ## Include this document as body
+#' my_document <- write_rmd(
+#' 		title = "A journey in rOpenSci",
+#' 		author = "Miguel Alvarez",
+#' 		output = "html_document",
+#' 		body = ex_document)
 #' }
 #' 
 #' @export read_rmd

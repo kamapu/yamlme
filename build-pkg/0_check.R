@@ -6,7 +6,7 @@
 # Needed packages
 library(devtools)
 library(covr)
-#library(goodpractice)
+library(goodpractice)
 library(rmarkdown)
 library(knitr)
 library(pkgdown)
@@ -31,7 +31,7 @@ report()
 ## purl("vignettes/taxlist-intro.Rmd", "vignettes/taxlist-intro.R")
 
 # Check application of good practices
-## gp()
+gp()
 
 # Build package
 pkg_loc <- build(path="build-pkg")

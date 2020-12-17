@@ -13,13 +13,13 @@
 assign_class <- function(x) {
 	if(class(x) == "character") {
 		# short vector
-		if(length(x) == 1)
+		if(length(x) == 1 & substr(x[1], 1, 1) != "-")
 			class(x) <- c("vector_s", "character")
 		# vertical line vector
 		if(length(x) > 1 & (x[1] == "|" | x[1] == ">"))
 			class(x) <- c("vector_vl", "character")
 		# dash vector
-		if(length(x) > 1 & substr(x[1], 1, 1) == "-")
+		if(substr(x[1], 1, 1) == "-")
 			class(x) <- c("vector_d", "character")
 	}
 	# Return object

@@ -25,7 +25,7 @@
 #' 
 #' @export read_rmd
 #' 
-read_rmd <- function(file, ..., skip_head=TRUE) {
+read_rmd <- function(file, ..., skip_head = TRUE) {
 	file <- txt_body(readLines(file, ...))
 	if(skip_head) {
 		if(substr(file[1], 1, 3) != "---")

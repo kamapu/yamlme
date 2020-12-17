@@ -54,7 +54,7 @@ my_document <- write_rmd(title = "Mi First Document", author = "My Name",
 				"- Start the coffe mashine",
 				"- Start the computer",
 				"- Read mails"))
-cat(my_document)
+my_document
 ```
 
 By this way it is possible to produce documents from plain R-code. This

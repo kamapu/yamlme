@@ -7,13 +7,14 @@
 write_rmd(..., append, body = "", filename)
 }
 \arguments{
-\item{...}{Named arguments to be inserted in the yaml head. These arguments
+\item{...}{Named arguments to be inserted in the YAML header. These arguments
 may be inserted either as vectors or lists.}
 
-\item{append}{A piece of code to be appended in the head. For instance, it
+\item{append}{A piece of code to be appended in the header. For instance, it
 can contain commented code.}
 
-\item{body}{The content of the document that will be inserted after the head.}
+\item{body}{The content of the document that will be inserted after the
+header.}
 
 \item{filename}{A character value with the name of the file to be written
 (usually a *.Rmd file). If missing, no file will be written by the

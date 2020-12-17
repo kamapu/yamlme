@@ -3,6 +3,7 @@
 ^\.settings$
 ^\.gitignore$
 ^\.project$
+^NEWS\.md$
 ^README\.md$
 ^README\.Rmd$
 ^data-raw$

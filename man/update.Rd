@@ -21,5 +21,7 @@ header (passed to
 \code{\link[=write_rmd]{write_rmd()}}).}
 }
 \description{
-Alternative to modify settings and content in \code{rmd_doc} objects.
+Alternative to modify settings and content in \code{rmd_doc} objects. Note that to
+skip some elements of the YAML header, you can set the argument NULL to the
+respective parameter.
 }

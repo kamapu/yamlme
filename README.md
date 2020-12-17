@@ -45,23 +45,23 @@ my_document <- write_rmd(title = "Mi First Document", author = "My Name",
                 "- Start the coffe mashine",
                 "- Start the computer",
                 "- Read mails"))
-cat(my_document)
+my_document
 #> ---
-#>  title: Mi First Document
-#>  author: My Name
-#>  output: html_document
-#>  # This is a comment in head
-#>  ---
+#> title: Mi First Document
+#> author: My Name
+#> output: html_document
+#> # This is a comment in head
 #> 
-#>  # Starting a working day
-#>  
-#>  At the beginning of every day I will do:
-#>  
-#>  - Say everyone "Good morning!"
-#>  - Start the coffe mashine
-#>  - Start the computer
-#>  - Read mails
+#> ---
 #> 
+#> # Starting a working day
+#> 
+#> At the beginning of every day I will do:
+#> 
+#> - Say everyone "Good morning!"
+#> - Start the coffe mashine
+#> - Start the computer
+#> - Read mails
 ```
 
 By this way it is possible to produce documents from plain R-code. This

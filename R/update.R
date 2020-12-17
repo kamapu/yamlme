@@ -3,7 +3,9 @@
 #' @title Update an rmd_doc
 #' 
 #' @description 
-#' Alternative to modify settings and content in `rmd_doc` objects.
+#' Alternative to modify settings and content in `rmd_doc` objects. Note that to
+#' skip some elements of the YAML header, you can set the argument NULL to the
+#' respective parameter.
 #' 
 #' @param object An object of class `rmd_doc`.
 #' @param ... Named arguments to be inserted in the YAML header (passed to

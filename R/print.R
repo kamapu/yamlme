@@ -18,7 +18,7 @@
 #' 
 print.rmd_doc <- function(x, maxlines = 15, ...) {
 	x <- paste0(c("---\n", write_yaml(x$header), x$append,
-			"---\n\n", x$body, "\n"), collapse = "")
+			"\n---\n\n", x$body, "\n"), collapse = "")
 	if(length(x) > maxlines)
 		cat(x[1:maxlines], "\n", "[...truncated]\n") else cat(x)
 }

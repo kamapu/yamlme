@@ -35,7 +35,7 @@ write_rmd <- function(..., append, body = "", filename) {
 	if(!missing(filename)) {
 		con <- file(filename, "wb")
 		writeBin(charToRaw(paste0(c("---\n", write_yaml(OUT$header), OUT$append,
-										"---\n\n", OUT$body, "\n"),
+										"\n---\n\n", OUT$body, "\n"),
 								collapse="")),
 				con)
 		close(con)

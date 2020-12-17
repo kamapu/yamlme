@@ -119,54 +119,30 @@ In this case we can render the document directly from the resulting object.
 render_rmd(input = my_document, output_file = "my_document")
 ```
 
-# Creating a template in a function
+# Using the objects as template
 
-A template in `yamlme` can be defined as a function setting default arguments
-that will be passed to `write_rmd()`.
+The function `update()` can be used to modify settings and content in documents
+written by `write_rmd()`.
 
 ```{r}
-my_template <- function(
-		title = "My Awesome Document",
+my_template <- write_rmd(
+		title = "Example HTML document",
 		author = "My Self",
 		output = "html_document",
 		body = txt_body(
 				"# Introduction",
 				"",
-				"This is just an example."),
-		...) {
-	write_rmd(
-			title = title,
-			author = author,
-			output = output,
-			body = body,
-			...)
-}
-```
-
-Thus we can just call this function without setting any argument to produce the
-template.
-
-```{r}
-(my_template())
+				"This is just an example."))
+my_template
 ```
 
 We can also modify the template to adapt the output or the template of the
 document.
 
 ```{r}
-(my_template(
-				output = "pdf_document",
-				append = "# this is a modified version"
-))
-```
-
-Note that the original template will be rendered as a HTML document, while the
-second alternative will produce a PDF document.
-
-```{r eval = FALSE}
-# Modify only the title of the template and render
-render_rmd(my_template(title = "Example HTML document"))
-
-# Modify title and output format before rendering
-render_rmd(my_template(title = "Example PDF document", output = "pdf_document"))
+my_template <- update(my_template, 
+		title = "Example PDF document",
+		output = "pdf_document",
+		append = "# this is a modified version")
+my_template
 ```

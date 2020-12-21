@@ -7,10 +7,16 @@
 
 <!-- badges: start -->
 
-[![Travis build
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/yamlme)](https://cran.r-project.org/package=yamlme)
+[![Rdoc](http://www.rdocumentation.org/badges/version/yamlme)](http://www.rdocumentation.org/packages/yamlme)
+<br> [![Travis build
 status](https://travis-ci.com/kamapu/yamlme.svg?branch=master)](https://travis-ci.com/kamapu/yamlme)
 [![Codecov test
 coverage](https://codecov.io/gh/kamapu/yamlme/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/yamlme?branch=master)
+<br>
+[![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/yamlme)](https://cran.r-project.org/package=yamlme)
+[![total
+downloads](http://cranlogs.r-pkg.org/badges/grand-total/yamlme)](https://cran.r-project.org/package=yamlme)
 <!-- badges: end -->
 
 ## Installing yamlme

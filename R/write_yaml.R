@@ -29,7 +29,7 @@ write_yaml.vector_s <- function(x, ...) {
 # vertical line vector method
 write_yaml.vector_vl <- function(x, depth=1) {
 	x[1] <- paste0(x[1], "\n")
-	for(i in 2:length(x))
+	for(i in seq_along(x)[-1])
 		x[i] <- paste0(rep("  ", depth), x[i], "\n")
 	return(x)
 }
@@ -38,7 +38,7 @@ write_yaml.vector_vl <- function(x, depth=1) {
 #' 
 # dash vector method
 write_yaml.vector_d <- function(x, depth=1) {
-	for(i in 1:length(x))
+	for(i in seq_along(x))
 		if(substr(x[i], 1, 1) == "-") x[i] <- paste0(rep("  ", depth), x[i],
 					"\n") else
 			x[i] <- paste0(rep("  ", depth), "  ", x[i], "\n")

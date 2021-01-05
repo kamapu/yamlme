@@ -40,7 +40,7 @@ install_github("kamapu/yamlme", build_vignettes = TRUE)
 
 After installing the package have to be loaded in the current R-session.
 
-```{r eval=FALSE}
+```{r}
 library(yamlme)
 ```
 

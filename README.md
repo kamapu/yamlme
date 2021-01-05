@@ -1,6 +1,5 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- Use snippet 'render_markdown' for it -->
 
 # yamlme
@@ -13,6 +12,7 @@
 status](https://travis-ci.com/kamapu/yamlme.svg?branch=master)](https://travis-ci.com/kamapu/yamlme)
 [![Codecov test
 coverage](https://codecov.io/gh/kamapu/yamlme/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/yamlme?branch=master)
+[![R-CMD-check](https://github.com/kamapu/yamlme/workflows/R-CMD-check/badge.svg)](https://github.com/kamapu/yamlme/actions)
 <br>
 [![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/yamlme)](https://cran.r-project.org/package=yamlme)
 [![total

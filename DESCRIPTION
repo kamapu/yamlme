@@ -9,11 +9,11 @@ Authors@R: c(
 Depends:
 	R(>= 3.0.0)
 Imports:
-    knitr,
     methods
 Suggests:
     covr,
     devtools,
+    knitr,
     rmarkdown,
     roxygen2,
     testthat

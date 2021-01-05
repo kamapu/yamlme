@@ -20,7 +20,7 @@ jobs:
       
       # Install packages needed
       - name: install required packages
-        run: Rscript -e 'install.packages(c("devtools", "knitr"))'
+        run: Rscript -e 'install.packages(c("devtools", "knitr", "rmarkdown"))'
       
       # Install packages needed from GitHub
       - name: install from GitHub

@@ -1,0 +1,2 @@
+#' @importFrom methods setOldClass
+NULL

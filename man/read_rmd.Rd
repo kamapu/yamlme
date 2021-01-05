@@ -5,7 +5,12 @@
 \alias{txt_body}
 \title{Read R-markdown Documents}
 \usage{
-read_rmd(file, ..., skip_head = TRUE)
+read_rmd(
+  file,
+  ...,
+  append = "# document imported by 'read_rmd'",
+  skip_head = TRUE
+)
 
 txt_body(...)
 }
@@ -15,12 +20,15 @@ txt_body(...)
 \item{...}{Arguments passed by \code{read_rmd()} to \code{\link[=readLines]{readLines()}}.
 In \code{txt_body()} they are character values passed to \code{c()}.}
 
+\item{append}{Character value passed to function \code{\link[=read_rmd]{read_rmd()}}.}
+
 \item{skip_head}{Logical value indicating whether the yaml head should be
-skip or not.}
+skip or not (this argument is not used at the moment).}
 }
 \value{
-A character vector that can be use as argument for the parameter \code{body} in
-the function \code{\link[=write_rmd]{write_rmd()}}.
+An object of class \code{rmd_doc} by the function \code{read_rmd()}. The function
+\code{txt_body()} retrieves a character vector suitable for the parameter \code{body}
+in the function \code{\link[=write_rmd]{write_rmd()}}.
 }
 \description{
 The function \code{read_rmd()} reads Rmd files into character vectors pasting a

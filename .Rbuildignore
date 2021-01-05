@@ -1,5 +1,6 @@
 ^\.dbeaver$
 ^\.git$
+^\.github$
 ^\.settings$
 ^\.gitignore$
 ^\.project$

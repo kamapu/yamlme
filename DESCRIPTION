@@ -10,13 +10,13 @@ Depends:
 	R(>= 3.0.0)
 Imports:
     knitr,
-    methods,
-    testthat
+    methods
 Suggests:
+    covr,
     devtools,
-    roxygen2,
     rmarkdown,
-    covr
+    roxygen2,
+    testthat
 Description: Setting layout through 'YAML' headers in 'R-Markdown' documents,
     enabling their automatic generation.
     Functions and methods may summarize 'R' objects in automatic reports, for

@@ -9,11 +9,13 @@
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/yamlme)](https://cran.r-project.org/package=yamlme)
 [![Rdoc](http://www.rdocumentation.org/badges/version/yamlme)](http://www.rdocumentation.org/packages/yamlme)
-<br> [![Travis build
+[![DOI](https://zenodo.org/badge/297735831.svg)](https://zenodo.org/badge/latestdoi/297735831)
+<br>
+[![R-CMD-check](https://github.com/kamapu/yamlme/workflows/R-CMD-check/badge.svg)](https://github.com/kamapu/yamlme/actions)
+[![Travis build
 status](https://travis-ci.com/kamapu/yamlme.svg?branch=master)](https://travis-ci.com/kamapu/yamlme)
 [![Codecov test
 coverage](https://codecov.io/gh/kamapu/yamlme/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/yamlme?branch=master)
-[![R-CMD-check](https://github.com/kamapu/yamlme/workflows/R-CMD-check/badge.svg)](https://github.com/kamapu/yamlme/actions)
 <br>
 [![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/yamlme)](https://cran.r-project.org/package=yamlme)
 [![total

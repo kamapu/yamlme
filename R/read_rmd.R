@@ -48,7 +48,7 @@ read_rmd <- function(file, ..., append = "# document imported by 'read_rmd'",
 	##     }
 	## }
 	# Original header is lost
-	message(paste("The yaml-header is not imported by this fucnion.",
+	message(paste("The yaml-header will not be imported by this function.",
 					"Use 'update()' to re-write the header."))
 	# Skip yaml-header from body
 	if(substr(file[1], 1, 3) != "---")

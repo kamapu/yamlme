@@ -33,7 +33,7 @@ To start a new session, load the package:
 library(yamlme)
 ```
 
-# Writting yaml heads
+# Writting yaml headers
 
 Several internal funcions and classes are implemented in this package, while
 the only visible result will be produced by the function `write_rmd()`.
@@ -61,10 +61,12 @@ my_document
 ```
 
 A similar way is applied in the case of the entries for the element `vignette`
-in a vignette document, hier for convenience recycling the tile of the vignette.
+in a vignette document, hier for convenience the title is first assigned to a
+character value to be recycled in the header.
 
 ```{r}
 the_title <- "Introduction to this package"
+
 my_document <- write_rmd(
 		title = the_title,
 		vignette = c(">",
@@ -119,7 +121,7 @@ In this case we can render the document directly from the resulting object.
 render_rmd(input = my_document, output_file = "my_document")
 ```
 
-# Using the objects as template
+# Using objects as template
 
 The function `update()` can be used to modify settings and content in documents
 written by `write_rmd()`.

@@ -4,7 +4,7 @@
 ################################################################################
 
 # Needed packages
-library(qpdf)
+## library(qpdf)
 library(devtools)
 library(covr)
 library(goodpractice)

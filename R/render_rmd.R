@@ -54,16 +54,18 @@ render_rmd.character <- function(input, ...)
 #' 
 #' @export
 #' 
-render_rmd.rmd_doc <- function(input, output_file, temp_file="_temp.Rmd",
-		delete_temp=TRUE, ...) {
+render_rmd.rmd_doc <- function(input, output_file, temp_file,
+		delete_temp = TRUE, ...) {
+	if(missing(temp_file))
+		temp_file <- tempfile(pattern = "doc_", tmpdir = ".", fileext = ".Rmd")
 	# Write temporary file
 	con <- file(temp_file, "wb")
 	writeBin(charToRaw(paste0(c("---\n", write_yaml(input$header), input$append,
-									"---\n\n", input$body, "\n"), collapse="")),
-			con)
+									"---\n\n", input$body, "\n"),
+							collapse = "")), con)
 	close(con)
 	# Render
-	render_rmd(input=temp_file, output_file=output_file, ...)
+	render_rmd(input = temp_file, output_file = output_file, ...)
 	# Delete temporary file
 	if(delete_temp) file.remove(temp_file)
 }

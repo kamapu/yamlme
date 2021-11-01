@@ -1,3 +1,10 @@
+yamlme 0.1.2
+============
+
+### Improvements
+
+* A description for the class `rmd_doc` was added.
+
 yamlme 0.1.1
 ============
 

@@ -28,4 +28,4 @@ License: GPL (>= 2)
 URL: https://github.com/kamapu/yamlme, https://kamapu.github.io/rpkg/yamlme/
 BugReports: https://github.com/kamapu/yamlme/issues
 VignetteBuilder: knitr
-RoxygenNote: 7.1.1.9000
+RoxygenNote: 7.1.2.9000

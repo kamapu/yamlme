@@ -10,13 +10,7 @@ render_rmd(input, ...)
 
 \method{render_rmd}{character}(input, ...)
 
-\method{render_rmd}{rmd_doc}(
-  input,
-  output_file,
-  temp_file = "_temp.Rmd",
-  delete_temp = TRUE,
-  ...
-)
+\method{render_rmd}{rmd_doc}(input, output_file, temp_file, delete_temp = TRUE, ...)
 }
 \arguments{
 \item{input}{Either a character value indicating the path and the name of the

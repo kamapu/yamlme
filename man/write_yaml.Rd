@@ -10,8 +10,6 @@ write_yaml(x, ...)
 \item{x}{Either a vector or a list.}
 
 \item{...}{Further arguments passed among methods.}
-
-\item{depth}{Hierarchical depth in lists.}
 }
 \description{
 Internal function for a proper rendering of yaml entry classes as arguments

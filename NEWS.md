@@ -4,6 +4,8 @@ yamlme 0.1.2
 ### Improvements
 
 * A description for the class `rmd_doc` was added.
+* Function `yamlme:::write_yaml()` is working recursively, based on discussions
+[here](https://stackoverflow.com/questions/61712575/how-to-run-function-on-the-deepest-level-only-in-a-nested-list) and [here](https://stackoverflow.com/questions/70272176/get-names-at-deepest-level-of-a-nested-list-in-r/)
 
 yamlme 0.1.1
 ============

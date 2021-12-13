@@ -20,11 +20,13 @@ jobs:
       
       # Install packages needed
       - name: install required packages
-        run: Rscript -e 'install.packages(c("devtools", "knitr", "rmarkdown"))'
+        run: Rscript -e 'install.packages(c("devtools", "knitr", "rmarkdown"), dependencies = TRUE)'
       
       # Install packages needed from GitHub
       - name: install from GitHub
-        run: Rscript -e 'remotes::install_github("kamapu/yamlme")'
+        run: Rscript -e 'remotes::install_github("kamapu/yamlme", dependencies = TRUE)'
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       
       # Render README.md using rmarkdown
       - name: render README

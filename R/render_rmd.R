@@ -11,10 +11,13 @@
 #'     r-markdown file, or an object of class `rmd_doc`, written by
 #'     [write_rmd()].
 #' @param output_file A character value indicating the name of the output file.
-#'     It is passed to [rmarkdown::render()].
-#' @param temp_file A name for a temporary file created to render the object.
-#' @param delete_temp A logical value indicating whether `temp_file` should be
-#'     deleted after rendering or not.
+#'     This argument is passed to [rmarkdown::render()]. Note that the argument
+#'     only contains the name of the file without extension and can only be
+#'     written at the working directory.
+#' @param delete_rmd A logical value idicating whether the temporary Rmd file
+#'     should be deleted or not. If not, the file gets the same name as the
+#'     rendered file.
+#' @param temp_file,delete_temp Deprecated parameters.
 #' @param ... Further parameters passed to [rmarkdown::render()].
 #' 
 #' @examples 
@@ -25,14 +28,16 @@
 #' 
 #' ## Render the file with rmarkdown::render()
 #' render_rmd(filename, output_file="example")
+#' browseURL("example.html")
 #' 
 #' ## Render the file with yamlme
 #' text_document <- read_rmd(filename)
 #' 
-#' rmd_document <- write_rmd(title="my title", author="my name",
-#'     output="html_document", body=text_document)
+#' text_document <- update(text_document, title="my title", author="my name",
+#'     output="html_document")
 #' 
-#' render_rmd(rmd_document, output_file="example2")
+#' render_rmd(text_document, output_file="example2")
+#' browseURL("example2.html")
 #' }
 #' 
 #' @rdname render_rmd
@@ -54,18 +59,26 @@ render_rmd.character <- function(input, ...)
 #' 
 #' @export
 #' 
-render_rmd.rmd_doc <- function(input, output_file, temp_file,
-		delete_temp = TRUE, ...) {
-	if(missing(temp_file))
-		temp_file <- tempfile(pattern = "doc_", tmpdir = ".", fileext = ".Rmd")
-	# Write temporary file
-	con <- file(temp_file, "wb")
+render_rmd.rmd_doc <- function(input, output_file, delete_rmd = TRUE, temp_file,
+		delete_temp, ...) {
+  if(!missing(delete_temp))
+    warning(paste("Parameter 'delete_temp' is deprecated.",
+            "Use 'delete_rmd' instead."))
+  if(!missing(temp_file))
+    warning("Parameter 'temp_file' is deprecated.")
+  # Temporary file
+  temp_file <- file.path(tempdir(), output_file)
+  # Write temporary file
+	con <- file(paste0(temp_file, ".Rmd"), "wb")
 	writeBin(charToRaw(paste0(c("---\n", write_yaml(input$header), input$append,
 									"---\n\n", input$body, "\n"),
 							collapse = "")), con)
 	close(con)
 	# Render
-	render_rmd(input = temp_file, output_file = output_file, ...)
-	# Delete temporary file
-	if(delete_temp) file.remove(temp_file)
+	render_rmd(input = paste0(temp_file, ".Rmd"), ...)
+  # Move resulting files
+  OUT <- list.files(tempdir(), output_file)
+  if(delete_rmd)
+    OUT <- OUT[!grepl(".Rmd", OUT, fixed = TRUE)]
+  file.copy(from = file.path(tempdir(), OUT), to = getwd())
 }

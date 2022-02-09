@@ -39,19 +39,21 @@ by \code{\link[=write_rmd]{write_rmd()}}.
 \dontrun{
 ## copy example to your working directory
 filename <- "taxlistjourney.Rmd"
-file.copy(from=file.path(path.package("yamlme"), filename), to=filename)
+file.copy(from = file.path(path.package("yamlme"), filename), to = filename)
 
 ## Render the file with rmarkdown::render()
-render_rmd(filename, output_file="example")
+render_rmd(filename, output_file = "example")
 browseURL("example.html")
 
 ## Render the file with yamlme
 text_document <- read_rmd(filename)
 
-text_document <- update(text_document, title="my title", author="my name",
-    output="html_document")
+text_document <- update(text_document,
+  title = "my title", author = "my name",
+  output = "html_document"
+)
 
-render_rmd(text_document, output_file="example2")
+render_rmd(text_document, output_file = "example2")
 browseURL("example2.html")
 }
 

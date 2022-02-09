@@ -26,13 +26,15 @@ objects are displayed in the console.
 
 ## Create a new document
 my_document <- write_rmd(
-		title = "A journey in rOpenSci",
-		author = "Miguel Alvarez",
-		output = "html_document",
-		body = read_rmd(file.path(path.package("yamlme"),
-						"taxlistjourney.Rmd")))
+  title = "A journey in rOpenSci",
+  author = "Miguel Alvarez",
+  output = "html_document",
+  body = read_rmd(file.path(
+    path.package("yamlme"),
+    "taxlistjourney.Rmd"
+  ))
+)
 my_document
-
 \dontrun{
 ## Render the document
 render_rmd(my_document, "taxlistjourney")

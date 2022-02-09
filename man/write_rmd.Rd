@@ -16,9 +16,9 @@ can contain commented code.}
 \item{body}{The content of the document that will be inserted after the
 header.}
 
-\item{filename}{A character value with the name of the file to be written
-(usually a *.Rmd file). If missing, no file will be written by this
-function.}
+\item{filename}{A character value with the name of the file to be written.
+If not included, the extension *.Rmd will be appended to this name.
+If missing, no file will be written by this function.}
 }
 \value{
 A character vector of class \code{rmd_doc} and, if argument set for parameter
@@ -33,12 +33,14 @@ Comments and pieces of header can be also added through the argument
 \examples{
 \dontrun{
 my_document <- write_rmd(
-		title = "Sample Document", author = "Miguel Alavarez",
-		output = "html_document",
-		body = txt_body(
-				"# Intro",
-				"",
-				"This is just an example."))
+  title = "Sample Document", author = "Miguel Alavarez",
+  output = "html_document",
+  body = txt_body(
+    "# Intro",
+    "",
+    "This is just an example."
+  )
+)
 my_document
 }
 

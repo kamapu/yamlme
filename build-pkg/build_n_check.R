@@ -6,6 +6,11 @@
 # Check
 library(rmarkdown)
 library(devtools)
+library(qpdf)
+library(styler)
+
+# Automatic styling
+style_pkg()
 
 # document package
 document()

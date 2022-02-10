@@ -8,12 +8,9 @@
 <!-- badges: start -->
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/yamlme)](https://cran.r-project.org/package=yamlme)
-[![Rdoc](http://www.rdocumentation.org/badges/version/yamlme)](http://www.rdocumentation.org/packages/yamlme)
 [![DOI](https://zenodo.org/badge/297735831.svg)](https://zenodo.org/badge/latestdoi/297735831)
 <br>
 [![R-CMD-check](https://github.com/kamapu/yamlme/workflows/R-CMD-check/badge.svg)](https://github.com/kamapu/yamlme/actions)
-[![Travis build
-status](https://travis-ci.com/kamapu/yamlme.svg?branch=master)](https://travis-ci.com/kamapu/yamlme)
 [![Codecov test
 coverage](https://codecov.io/gh/kamapu/yamlme/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/yamlme?branch=master)
 <br>
@@ -24,7 +21,14 @@ downloads](http://cranlogs.r-pkg.org/badges/grand-total/yamlme)](https://cran.r-
 
 ## Installing yamlme
 
-For installing this package use `devtools`:
+You can install the last release from CRAN
+
+``` r
+install.packages("yamlme", dependencies = TRUE)
+```
+
+or the current development version from GitHub, using the package
+`devtools`:
 
 ``` r
 library(devtools)
@@ -60,6 +64,7 @@ my_document
 #> author: My Name
 #> output: html_document
 #> # This is a comment in head
+#> 
 #> ---
 #> 
 #> # Starting a working day

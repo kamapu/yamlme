@@ -97,6 +97,6 @@ render_rmd.rmd_doc <- function(input, output_file, delete_rmd = TRUE, temp_file,
     if (delete_rmd) {
       OUT <- OUT[!grepl(".Rmd", OUT, fixed = TRUE)]
     }
-    file.copy(from = file.path(tempdir(), OUT), to = out_dir)
+    file.copy(from = file.path(tempdir(), OUT), to = out_dir, overwrite = TRUE)
   }
 }

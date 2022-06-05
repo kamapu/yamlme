@@ -1,0 +1,10 @@
+pandoc: 2.14.2
+pkgdown: 2.0.3
+pkgdown_sha: ~
+articles:
+  yamlme-intro: yamlme-intro.html
+last_built: 2022-06-05T22:25Z
+urls:
+  reference: https://kamapu.github.io/yamlme/reference
+  article: https://kamapu.github.io/yamlme/articles
+

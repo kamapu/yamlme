@@ -27,7 +27,9 @@ LazyData: true
 SystemRequirements: pandoc (>= 1.14) - http://pandoc.org
 Roxygen: list(markdown = TRUE)
 License: GPL (>= 2)
-URL: https://github.com/kamapu/yamlme, https://kamapu.github.io/rpkg/yamlme/
+URL: https://github.com/kamapu/yamlme,
+    https://kamapu.github.io/rpkg/yamlme/,
+    https://kamapu.github.io/yamlme/
 BugReports: https://github.com/kamapu/yamlme/issues
 VignetteBuilder: knitr
 RoxygenNote: 7.1.2.9000

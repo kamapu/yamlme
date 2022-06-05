@@ -1,0 +1,5 @@
+url: https://kamapu.github.io/yamlme/
+template:
+  bootstrap: 5
+  bootswatch: cosmo
+  

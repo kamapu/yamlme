@@ -14,6 +14,7 @@ yamlme 0.1.2
 * Parameter `output_file` in function `render_rmd()` may include the .Rmd
   extension or not and the file can be written in the temporary directory or
   any other path.
+* Replacement methods for function `as.list()` (function `as<-`).
 
 yamlme 0.1.1
 ============

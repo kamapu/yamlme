@@ -32,8 +32,9 @@ Comments and pieces of header can be also added through the argument
 }
 \examples{
 \dontrun{
-my_document <- write_rmd(
-  title = "Sample Document", author = "Miguel Alavarez",
+my_document <- list(
+  title = "Sample Document",
+  author = "Miguel Alavarez",
   output = "html_document",
   body = txt_body(
     "# Intro",
@@ -41,7 +42,8 @@ my_document <- write_rmd(
     "This is just an example."
   )
 )
-my_document
+my_document <- as(my_document, "rmd_doc")
+write_rmd(my_document, filename = file.path(tempdir(), "example"))
 }
 
 }

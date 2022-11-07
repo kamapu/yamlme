@@ -17,7 +17,6 @@
 #' @param delete_rmd A logical value idicating whether the temporary Rmd file
 #'     should be deleted or not. If not, the file gets the same name as the
 #'     rendered file.
-#' @param temp_file,delete_temp Deprecated parameters.
 #' @param ... Further parameters passed to [rmarkdown::render()].
 #'
 #' @examples
@@ -45,58 +44,43 @@
 #' @rdname render_rmd
 #'
 #' @export
-#'
 render_rmd <- function(input, ...) {
   UseMethod("render_rmd", input)
 }
 
 #' @rdname render_rmd
-#'
+#' @aliases render_rmd,character-method
+#' @method render_rmd character
 #' @export
-#'
 render_rmd.character <- function(input, ...) {
-  rmarkdown::render(input, ...)
+  render(input, ...)
 }
 
 #' @rdname render_rmd
-#'
+#' @aliases render_rmd,rmd_doc-method
+#' @method render_rmd rmd_doc
 #' @export
-#'
-render_rmd.rmd_doc <- function(input, output_file, delete_rmd = TRUE, temp_file,
-                               delete_temp, ...) {
-  if (!missing(delete_temp)) {
-    warning(paste(
-      "Parameter 'delete_temp' is deprecated.",
-      "Use 'delete_rmd' instead."
-    ))
+render_rmd.rmd_doc <- function(input, output_file, delete_rmd = TRUE, ...) {
+  if (!"header" %in% names(input)) {
+    stop("Input 'rmd_doc' object without header are not allowed.")
   }
-  if (!missing(temp_file)) {
-    warning("Parameter 'temp_file' is deprecated.")
+  if (missing(output_file)) {
+    output_file <- paste0(deparse(substitute(input)))
   }
-  # Temporary file
-  out_file <- basename(output_file)
-  if (substr(out_file, nchar(out_file) - 3, nchar(out_file)) == ".Rmd") {
-    out_file <- substr(out_file, 1, nchar(out_file) - 4)
+  output_file_temp <- file.path(tempdir(), basename(output_file))
+  rmd_file <- file.path(
+    tempdir(),
+    paste0(file_path_sans_ext(basename(output_file)), ".Rmd")
+  )
+  write_rmd(object = input, filename = rmd_file)
+  render(rmd_file, output_file = output_file_temp, ...)
+  files_tmp <- list.files(tempdir())
+  files_tmp <- files_tmp[grepl(file_path_sans_ext(basename(output_file)),
+    files_tmp,
+    fixed = TRUE
+  )]
+  if (delete_rmd) {
+    files_tmp <- files_tmp[!grepl(".Rmd", files_tmp, fixed = TRUE)]
   }
-  out_dir <- dirname(output_file)
-  temp_file <- file.path(tempdir(), out_file)
-  # Write temporary file
-  con <- file(paste0(temp_file, ".Rmd"), "wb")
-  writeBin(charToRaw(paste0(c(
-    "---\n", write_yaml(input$header), input$append,
-    "---\n\n", input$body, "\n"
-  ),
-  collapse = ""
-  )), con)
-  close(con)
-  # Render
-  render_rmd(input = paste0(temp_file, ".Rmd"), ...)
-  # Move resulting files
-  OUT <- list.files(tempdir(), out_file)
-  if (out_dir != tempdir()) {
-    if (delete_rmd) {
-      OUT <- OUT[!grepl(".Rmd", OUT, fixed = TRUE)]
-    }
-    file.copy(from = file.path(tempdir(), OUT), to = out_dir, overwrite = TRUE)
-  }
+  file.copy(from = file.path(tempdir(), files_tmp), to = dirname(output_file))
 }

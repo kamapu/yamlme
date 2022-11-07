@@ -5,19 +5,12 @@
 \alias{update.rmd_doc}
 \title{Update an rmd_doc}
 \usage{
-\method{update}{rmd_doc}(object, ..., append, body)
+\method{update}{rmd_doc}(object, ...)
 }
 \arguments{
 \item{object}{An object of class \code{rmd_doc}.}
 
 \item{...}{Named arguments to be inserted in the YAML header (passed to
-\code{\link[=write_rmd]{write_rmd()}}).}
-
-\item{append}{A piece of code to be appended in the header (passed to
-\code{\link[=write_rmd]{write_rmd()}}).}
-
-\item{body}{The content of the document that will be inserted after the
-header (passed to
 \code{\link[=write_rmd]{write_rmd()}}).}
 }
 \description{

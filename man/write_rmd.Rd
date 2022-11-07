@@ -2,19 +2,19 @@
 % Please edit documentation in R/write_rmd.R
 \name{write_rmd}
 \alias{write_rmd}
+\alias{write_rmd.rmd_doc}
+\alias{write_rmd,rmd_doc-method}
 \title{Writing R-Markdown Documents}
 \usage{
-write_rmd(..., append, body = "", filename)
+write_rmd(object, ...)
+
+\method{write_rmd}{rmd_doc}(object, filename, ...)
 }
 \arguments{
-\item{...}{Named arguments to be inserted in the YAML header. These arguments
-may be inserted either as vectors or lists.}
+\item{object}{\linkS4class{rmd_doc} object used to write an Rmarkdown file. If
+header is missing, \code{write_rmd()} will fail with an error message.}
 
-\item{append}{A piece of code to be appended in the header. For instance, it
-can contain commented code.}
-
-\item{body}{The content of the document that will be inserted after the
-header.}
+\item{...}{Further arguments passed among methods (not yet used).}
 
 \item{filename}{A character value with the name of the file to be written.
 If not included, the extension *.Rmd will be appended to this name.
@@ -25,7 +25,7 @@ A character vector of class \code{rmd_doc} and, if argument set for parameter
 \code{filename}, an Rmd file.
 }
 \description{
-This function generates YAML headers and R-Markdown documents by including
+This function generates R-Markdown documents by including
 the settings as arguments of the function.
 Comments and pieces of header can be also added through the argument
 \code{append}.

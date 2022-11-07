@@ -4,21 +4,23 @@
 #' @title Read R-markdown Documents
 #'
 #' @description
-#' The function `read_rmd()` reads Rmd files into character vectors pasting a
-#' line break at the end of each line.
-#' The function `txt_body()` will do the same to one or more character vectors.
+#' Import Rmd files into objects of class [rmd_doc-class].
+#'
+#' The function `txt_body()` add a line break at the end of each element of a
+#' character vector considering them as single lines.
+#'
+#' Note that comments will be deleted in the input file.
 #'
 #' @param file Character value indicating the path and the name to the Rmd file.
-#' @param append Character value passed to function [read_rmd()].
 #' @param ... Arguments passed by `read_rmd()` to [readLines()].
 #'     In `txt_body()` they are character values passed to `c()`.
 #' @param skip_head Logical value indicating whether the yaml head should be
 #'     skip or not (this argument is not used at the moment).
 #'
 #' @return
-#' An object of class `rmd_doc` by the function `read_rmd()`. The function
-#' `txt_body()` retrieves a character vector suitable for the parameter `body`
-#' in the function [write_rmd()].
+#' The function `read_rmd()` returns a [rmd_doc-class] object.
+#' The function `txt_body()`, a character vector suitable for the parameter
+#' `body` in the function [write_rmd()].
 #'
 #' @examples
 #' \dontrun{
@@ -27,51 +29,28 @@
 #'   path.package("yamlme"),
 #'   "taxlistjourney.Rmd"
 #' ))
-#'
-#' ## Include this document as body
-#' my_document <- write_rmd(
-#'   title = "A journey in rOpenSci",
-#'   author = "Miguel Alvarez",
-#'   output = "html_document",
-#'   body = ex_document
-#' )
 #' }
-#'
-#' @export read_rmd
-#'
-read_rmd <- function(file, ..., append = "# document imported by 'read_rmd'",
-                     skip_head = TRUE) {
+#' @export
+read_rmd <- function(file, ..., skip_head = FALSE) {
   file <- txt_body(readLines(file, ...))
-  ## TODO: This code can be recycled in later versions
-  ## if(skip_head) {
-  ##     if(substr(file[1], 1, 3) != "---")
-  ##         message("Rmd file seems to be headless") else {
-  ##         idx <- cumsum(grepl("---", file, fixed=TRUE))
-  ##         file <- file[-c(1:(sum(idx[idx == 1]) + 1))]
-  ##     }
-  ## }
-  # Original header is lost
-  message(paste(
-    "The yaml-header will not be imported by this function.",
-    "Use 'update()' to re-write the header."
-  ))
-  # Skip yaml-header from body
   if (substr(file[1], 1, 3) != "---") {
     message("Rmd file seems to be headless")
+    yaml_head <- list(body = file)
   } else {
     idx <- cumsum(grepl("---", file, fixed = TRUE))
-    file <- file[-c(1:(sum(idx[idx == 1]) + 1))]
+    yaml_head <- list(header = yaml.load(paste0(file[idx == 1], collapse = "")))
+    yaml_head$body <- file[idx > 1]
   }
-  # Use write_rmd
-  # TODO: Later versions may use 'update_rmd()' instead
-  return(write_rmd(..., append = append, body = file))
+  if (skip_head) {
+    yaml_head$header <- NULL
+  }
+  class(yaml_head) <- c("rmd_doc", "list")
+  return(yaml_head)
 }
 
 #' @aliases txt_body
 #' @rdname read_rmd
-#'
 #' @export txt_body
-#'
 txt_body <- function(...) {
   return(paste0(c(...), "\n"))
 }

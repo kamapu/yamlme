@@ -15,29 +15,25 @@
 #' A display of the resulting R-Markdown document in the console.
 #'
 #' @examples
-#'
 #' ## Create a new document
-#' my_document <- write_rmd(
+#' my_document <- list(
 #'   title = "A journey in rOpenSci",
 #'   author = "Miguel Alvarez",
 #'   output = "html_document",
-#'   body = read_rmd(file.path(
-#'     path.package("yamlme"),
-#'     "taxlistjourney.Rmd"
-#'   ))
+#'   body = read_rmd(
+#'     file = file.path(path.package("yamlme"), "taxlistjourney.Rmd"),
+#'     skip_head = TRUE
+#'   )
 #' )
+#'
+#' my_document <- as(my_document, "rmd_doc")
 #' my_document
-#' \dontrun{
-#' ## Render the document
-#' render_rmd(my_document, "taxlistjourney")
-#' }
 #'
 #' @method print rmd_doc
 #' @export
-#'
 print.rmd_doc <- function(x, maxlines = 15, ...) {
   x <- paste0(c(
-    "---\n", write_yaml(x$header), x$append,
+    "---\n", as.yaml(x$header), x$append,
     "\n---\n\n", x$body, "\n"
   ), collapse = "")
   if (length(x) > maxlines) {

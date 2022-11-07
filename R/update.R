@@ -10,11 +10,6 @@
 #' @param object An object of class `rmd_doc`.
 #' @param ... Named arguments to be inserted in the YAML header (passed to
 #'     [write_rmd()]).
-#' @param append A piece of code to be appended in the header (passed to
-#'     [write_rmd()]).
-#' @param body The content of the document that will be inserted after the
-#'     header (passed to
-#'     [write_rmd()]).
 #'
 #' @examples
 #' \dontrun{
@@ -36,17 +31,13 @@
 #'
 #' @method update rmd_doc
 #' @export
-#'
-update.rmd_doc <- function(object, ..., append, body) {
-  if (!missing(append)) {
-    object$append <- append
-  }
-  if (!missing(body)) {
-    object$body <- body
-  }
+update.rmd_doc <- function(object, ...) {
   new_values <- list(...)
-  for (i in names(new_values)) {
+  for (i in names(new_values)[!names(new_values) %in% c("body")]) {
     object$header[[i]] <- new_values[[i]]
   }
-  invisible(object)
+  if ("body" %in% names(new_values)) {
+    object$body <- new_values$body
+  }
+  return(object)
 }

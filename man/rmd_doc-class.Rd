@@ -4,6 +4,6 @@
 \alias{rmd_doc-class}
 \title{R-markdown document}
 \description{
-An S3 class for rmarkdown documents. This function can be used either to
-update, modify or write Rmd files.
+An S3 class for rmarkdown documents iheriting properties from lists.
+This function can be used either to update, modify or write Rmd files.
 }

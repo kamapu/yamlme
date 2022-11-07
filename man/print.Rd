@@ -23,21 +23,18 @@ Quick display for \code{rmd_doc} objects. This method also defines the way how
 objects are displayed in the console.
 }
 \examples{
-
 ## Create a new document
-my_document <- write_rmd(
+my_document <- list(
   title = "A journey in rOpenSci",
   author = "Miguel Alvarez",
   output = "html_document",
-  body = read_rmd(file.path(
-    path.package("yamlme"),
-    "taxlistjourney.Rmd"
-  ))
+  body = read_rmd(
+    file = file.path(path.package("yamlme"), "taxlistjourney.Rmd"),
+    skip_head = TRUE
+  )
 )
+
+my_document <- as(my_document, "rmd_doc")
 my_document
-\dontrun{
-## Render the document
-render_rmd(my_document, "taxlistjourney")
-}
 
 }

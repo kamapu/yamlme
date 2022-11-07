@@ -3,9 +3,10 @@
 \name{print}
 \alias{print}
 \alias{print.rmd_doc}
+\alias{print,rmd_doc-method}
 \title{Print Method for rmd_doc}
 \usage{
-\method{print}{rmd_doc}(x, maxlines = 15, ...)
+\method{print}{rmd_doc}(x, maxlines = 10, ...)
 }
 \arguments{
 \item{x}{An object of class \code{rmd_doc}.}
@@ -23,18 +24,23 @@ Quick display for \code{rmd_doc} objects. This method also defines the way how
 objects are displayed in the console.
 }
 \examples{
-## Create a new document
-my_document <- list(
+## Document without header
+my_document <- read_rmd(
+  file = file.path(path.package("yamlme"), "taxlistjourney.Rmd"),
+  skip_head = TRUE
+)
+my_document
+
+## Add header using update
+my_document <- update(my_document,
   title = "A journey in rOpenSci",
   author = "Miguel Alvarez",
-  output = "html_document",
-  body = read_rmd(
-    file = file.path(path.package("yamlme"), "taxlistjourney.Rmd"),
-    skip_head = TRUE
-  )
+  output = "html_document"
 )
+my_document
 
-my_document <- as(my_document, "rmd_doc")
+## Header only
+my_document$body <- NULL
 my_document
 
 }

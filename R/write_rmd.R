@@ -22,8 +22,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' my_document <- write_rmd(
-#'   title = "Sample Document", author = "Miguel Alavarez",
+#' my_document <- list(
+#'   title = "Sample Document",
+#'   author = "Miguel Alavarez",
 #'   output = "html_document",
 #'   body = txt_body(
 #'     "# Intro",
@@ -31,7 +32,8 @@
 #'     "This is just an example."
 #'   )
 #' )
-#' my_document
+#' my_document <- as(my_document, "rmd_doc")
+#' write_rmd(my_document, filename = file.path(tempdir(), "example"))
 #' }
 #'
 #' @export
@@ -45,19 +47,9 @@ write_rmd <- function(object, ...) {
 #' @method write_rmd rmd_doc
 #' @export
 write_rmd.rmd_doc <- function(object, filename, ...) {
-  if (!"header" %in% names(object)) {
-    stop("Objects without yaml-header are not allowed.")
-  }
   con <- file(filename, "wb")
   writeBin(
-    charToRaw(paste0(c(
-      "---\n",
-      as.yaml(object$header),
-      "\n---\n\n",
-      object$body, "\n"
-    ),
-    collapse = ""
-    )),
+    charToRaw(print2text(object)),
     con
   )
   close(con)

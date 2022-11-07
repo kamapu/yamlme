@@ -39,7 +39,7 @@ read_rmd <- function(file, ..., skip_head = FALSE) {
   } else {
     idx <- cumsum(grepl("---", file, fixed = TRUE))
     yaml_head <- list(header = yaml.load(paste0(file[idx == 1], collapse = "")))
-    yaml_head$body <- file[idx > 1]
+    yaml_head$body <- file[idx > 1][-1]
   }
   if (skip_head) {
     yaml_head$header <- NULL

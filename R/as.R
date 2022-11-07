@@ -1,4 +1,12 @@
 #' @name as
+#'
+#' @title Coercing lists and rmd_doc objects
+#'
+#' @description
+#' Objects of class [rmd_doc-class] can be created from lists or converted back
+#' to lists. This is convenient for defining functions that manipulate the
+#' content of such objects.
+#'
 #' @rdname coerce-methods
 #' @aliases coerce,list,rmd_doc-method
 setAs("list", "rmd_doc", function(from) {

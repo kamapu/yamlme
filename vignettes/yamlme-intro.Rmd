@@ -1,0 +1,136 @@
+---
+title: "Setting elements in yaml headers for r-markdown documents"
+author: Miguel Alvarez
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Setting elements in yaml headers for r-markdown documents}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+The package `yamlme` targets to produce R-markdown
+documents from plain R code. The tasks of this package are the automatic
+generation of reports from R sessions as well as producing templates that can
+be shared as functions or `rmd_doc` objects.
+
+# Installing yamlme
+
+To install this package from its **GitHub** repository, you can use
+the package `devtools`.
+
+```{r eval = FALSE}
+library(devtools)
+install_github("kamapu/yamlme", build_vignettes = TRUE)
+```
+
+Load the package after you start a new session.
+
+```{r}
+library(yamlme)
+```
+
+# Writting R-markdown documents
+
+This package uses functions of
+[`yaml`](http://biostat.app.vumc.org/wiki/Main/YamlR) for reading and writing
+yaml-headers.
+In `yamlme`, R-markdown documents can be created from lists, for instance:
+
+```{r}
+my_document <- list(title = "My first document")
+as(my_document, "rmd_doc")
+```
+
+Some applications may also require a description (or abstract) as in the case of
+documents rendered by `distill`.
+To add a description you need to collapse lines into a single string
+(character value) including line breaks.
+The description will start with a vertical line in the yaml header.
+
+```{r}
+my_document <- list(description = paste0(c(
+            "This text starts with a vertical line",
+			"and will be thus used as a description",
+			"in the head."), collapse = "\n"))
+as(my_document, "rmd_doc")
+```
+
+A further class is used for entries starting with a dash symbol.
+
+```{r}
+my_document <- list(
+    author = list(
+        list(
+            name = "Miguel Alvarez",
+            url = "https://kamapu.github.io/"),
+        list(
+            name = "Bisrat H. Gebrekhidan")))
+as(my_document, "rmd_doc")
+```
+
+And finaly, nested entries can be provided as lists.
+
+```{r}
+my_document <- list(output = list(pdf_document = "default"))
+as(my_document, "rmd_doc")
+```
+
+# A full example
+
+Here there is an example of a full Rmarkdown document.
+
+```{r}
+my_document <- list(
+    title = "Mi First Document",
+    author = "My Name",
+    output = "html_document",
+    body = txt_body(
+        "# Starting a working day",
+		"",
+		"At the beginning of every day I will do:",
+		"",
+		"- Say everyone \"Good morning!\"",
+		"- Start the coffe mashine",
+		"- Start the computer",
+		"- Read mails"))
+my_document <- as(my_document, "rmd_doc")
+```
+
+In this case we can render the document directly from the resulting object.
+
+```{r eval = FALSE}
+render_rmd(input = my_document)
+browseURL("my_document.html")
+```
+
+# Using objects as template
+
+The function `update()` can be used to modify settings and content in documents
+written by `write_rmd()`.
+
+```{r}
+my_template <- list(
+    title = "Example HTML document",
+	author = "My Self",
+	output = "html_document",
+	body = txt_body(
+      "# Introduction",
+      "",
+      "This is just an example."))
+my_template <- as(my_template, "rmd_doc")
+my_template
+```
+
+We can also modify the template to adapt the output or the template of the
+document.
+
+```{r}
+my_template <- update(my_template, 
+		title = "Example PDF document",
+		output = "pdf_document")
+my_template
+```

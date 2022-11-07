@@ -47,6 +47,7 @@ write_rmd <- function(object, ...) {
 #' @method write_rmd rmd_doc
 #' @export
 write_rmd.rmd_doc <- function(object, filename, ...) {
+  filename <- paste0(file_path_sans_ext(filename), ".Rmd")
   con <- file(filename, "wb")
   writeBin(
     charToRaw(print2text(object)),

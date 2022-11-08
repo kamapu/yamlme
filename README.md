@@ -1,19 +1,20 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 <!-- Use snippet 'render_markdown' for it -->
 
 # yamlme
 
 <!-- badges: start -->
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/yamlme)](https://cran.r-project.org/package=yamlme)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/yamlme)](https://cran.r-project.org/package=yamlme)
 [![DOI](https://zenodo.org/badge/297735831.svg)](https://zenodo.org/badge/latestdoi/297735831)
 <br>
 [![R-CMD-check](https://github.com/kamapu/yamlme/workflows/R-CMD-check/badge.svg)](https://github.com/kamapu/yamlme/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/kamapu/yamlme/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/yamlme?branch=master)
 <br>
-[![CRAN_downloads](http://cranlogs.r-pkg.org/badges/yamlme)](https://cran.r-project.org/package=yamlme)
+[![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/yamlme)](https://cran.r-project.org/package=yamlme)
 [![total
 downloads](http://cranlogs.r-pkg.org/badges/grand-total/yamlme)](https://cran.r-project.org/package=yamlme)
 <!-- badges: end -->

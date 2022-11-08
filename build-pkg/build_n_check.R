@@ -22,10 +22,11 @@ unlink(file.path(Folder, Files))
 
 # Re-build package and manual
 pkg_loc <- build(path = Folder, args = "--resave-data")
-build_manual(path = Folder)
+## build_manual(path = Folder)
 
 # common check
 check_built(path = pkg_loc)
 
 # Special steps ----------------------------------------------------------------
 install()
+build_manual(path = Folder)

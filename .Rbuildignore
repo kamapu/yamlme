@@ -9,6 +9,7 @@
 ^README\.Rmd$
 ^data-raw$
 ^build-pkg$
+^examples$
 ^lab$
 ^LICENSE$
 ^\.travis\.yml$

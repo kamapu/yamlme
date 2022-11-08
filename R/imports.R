@@ -1,3 +1,5 @@
 #' @importFrom methods setOldClass
-#' @importFrom rlist list.flatten
+#' @importFrom rmarkdown render
+#' @importFrom tools file_path_sans_ext
+#' @importFrom yaml as.yaml yaml.load
 NULL

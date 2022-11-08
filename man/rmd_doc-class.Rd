@@ -4,6 +4,7 @@
 \alias{rmd_doc-class}
 \title{R-markdown document}
 \description{
-An S3 class for rmarkdown documents. This function can be used either to
-update, modify or write Rmd files.
+An S3 class for rmarkdown documents iheriting properties from lists.
+Header settings are a list at \code{object$header}, while content in markdown
+is a character vector at \code{object$body}.
 }

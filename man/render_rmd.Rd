@@ -3,14 +3,16 @@
 \name{render_rmd}
 \alias{render_rmd}
 \alias{render_rmd.character}
+\alias{render_rmd,character-method}
 \alias{render_rmd.rmd_doc}
+\alias{render_rmd,rmd_doc-method}
 \title{Render documents from object}
 \usage{
 render_rmd(input, ...)
 
 \method{render_rmd}{character}(input, ...)
 
-\method{render_rmd}{rmd_doc}(input, output_file, delete_rmd = TRUE, temp_file, delete_temp, ...)
+\method{render_rmd}{rmd_doc}(input, output_file, delete_rmd = TRUE, ...)
 }
 \arguments{
 \item{input}{Either a character value indicating the path and the name of the
@@ -27,8 +29,6 @@ written at the working directory.}
 \item{delete_rmd}{A logical value idicating whether the temporary Rmd file
 should be deleted or not. If not, the file gets the same name as the
 rendered file.}
-
-\item{temp_file, delete_temp}{Deprecated parameters.}
 }
 \description{
 This function is a wrapper of \code{\link[rmarkdown:render]{rmarkdown::render()}} and will also work with

@@ -1,4 +1,3 @@
-# TODO: internal function printing for print and write_rmd
 #' @name print2text
 #' @title Print content of rmd_doc into a text string
 #'
@@ -22,6 +21,7 @@ print2text <- function(x) {
     )
   }
   if ("body" %in% names(x)) {
+    x <- x[c("header", "body")]
     x$body <- paste0(x$body, collapse = "")
   }
   return(do.call(paste0, list(x, collapse = "")))
@@ -43,25 +43,7 @@ print2text <- function(x) {
 #' @return
 #' A display of the resulting R-Markdown document in the console.
 #'
-#' @examples
-#' ## Document without header
-#' my_document <- read_rmd(
-#'   file = file.path(path.package("yamlme"), "taxlistjourney.Rmd"),
-#'   skip_head = TRUE
-#' )
-#' my_document
-#'
-#' ## Add header using update
-#' my_document <- update(my_document,
-#'   title = "A journey in rOpenSci",
-#'   author = "Miguel Alvarez",
-#'   output = "html_document"
-#' )
-#' my_document
-#'
-#' ## Header only
-#' my_document$body <- NULL
-#' my_document
+#' @example examples/print.R
 #'
 #' @method print rmd_doc
 #' @aliases print,rmd_doc-method

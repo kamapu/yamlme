@@ -42,5 +42,4 @@ my_document
 ## Header only
 my_document$body <- NULL
 my_document
-
 }

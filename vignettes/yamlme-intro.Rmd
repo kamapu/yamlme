@@ -59,7 +59,27 @@ my_document <- list(description = paste0(c(
 as(my_document, "rmd_doc")
 ```
 
-A further class is used for entries starting with a dash symbol.
+You can use character vectors to produce sequences in the yaml header, as
+sometimes required for PDF documents.
+
+```{r}
+my_document <- list("header-includes" = c(
+        "\\usepackage{titling}",
+        "\\pretitle{\\begin{flushleft}\\LARGE\\textbf}",
+        "\\posttitle{\\end{flushleft}}",
+        "\\sffamily"))
+as(my_document, "rmd_doc")
+```
+
+List embedded into lists can be conveniently used to produce more complex maps
+for yaml headers in Rmarkdown documents.
+
+```{r}
+my_document <- list(output = list(pdf_document = "default"))
+as(my_document, "rmd_doc")
+```
+
+The following is a more complex map using embedded lists.
 
 ```{r}
 my_document <- list(
@@ -72,14 +92,12 @@ my_document <- list(
 as(my_document, "rmd_doc")
 ```
 
-And finaly, nested entries can be provided as lists.
+To know the representation of a specific yaml map in Rmarkdown documents, you
+can read Rmd files using the function `read_rmd()`. Also consider a visit
+to the R yaml homepage [here](https://biostat.app.vumc.org/wiki/Main/YamlR).
 
-```{r}
-my_document <- list(output = list(pdf_document = "default"))
-as(my_document, "rmd_doc")
-```
 
-# A full example
+# Case example
 
 Here there is an example of a full Rmarkdown document.
 

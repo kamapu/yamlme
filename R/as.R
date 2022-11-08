@@ -1,5 +1,41 @@
-#' @name as
+#' @name coerce-methods
+#' @rdname coerce-methods
 #'
+#' @description
+#' Coercion of lists into [rmd_doc-class] objects and vice versa.
+#'
+#' @param object Either a list or a [rmd_doc-class] object.
+#'
+#' @example examples/as.R
+#'
+#' @export
+list2rmd_doc <- function(object) {
+  x <- list()
+  if (!all(names(object) == "body")) {
+    x$header <- object[names(object) != "body"]
+  }
+  if ("body" %in% names(object)) {
+    x$body <- object$body
+  }
+  class(x) <- c("rmd_doc", "list")
+  return(x)
+}
+
+#' @rdname coerce-methods
+#' @export
+rmd_doc2list <- function(object) {
+  x <- list()
+  if (any(!names(object) %in% c("body"))) {
+    x$header <- object[names(object) != "body"]
+  }
+  if ("body" %in% names(object)) {
+    x$body <- object$body
+  }
+  class(x) <- c("rmd_doc", "list")
+  return(x)
+}
+
+#' @name coerce-methods
 #' @title Coercing lists and rmd_doc objects
 #'
 #' @description
@@ -9,29 +45,9 @@
 #'
 #' @rdname coerce-methods
 #' @aliases coerce,list,rmd_doc-method
-setAs("list", "rmd_doc", function(from) {
-  x <- list()
-  if (!all(names(from) == "body")) {
-    x$header <- from[names(from) != "body"]
-  }
-  if ("body" %in% names(from)) {
-    x$body <- from$body
-  }
-  class(x) <- c("rmd_doc", "list")
-  return(x)
-})
+setAs("list", "rmd_doc", function(from) list2rmd_doc(object = from))
 
-#' @name as
+#' @name coerce-methods
 #' @rdname coerce-methods
 #' @aliases coerce,list,rmd_doc-method
-setAs("rmd_doc", "list", function(from) {
-  x <- list()
-  if (any(!names(from) %in% c("body"))) {
-    x$header <- from[names(from) != "body"]
-  }
-  if ("body" %in% names(from)) {
-    x$body <- from$body
-  }
-  class(x) <- c("rmd_doc", "list")
-  return(x)
-})
+setAs("rmd_doc", "list", function(from) rmd_doc2list(object = from))

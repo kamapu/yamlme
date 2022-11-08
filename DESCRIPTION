@@ -1,5 +1,5 @@
 Package: yamlme
-Version: 0.1.2
+Version: 0.1.1.9005
 Encoding: UTF-8
 Title: Writing 'YAML' Headers for 'R-Markdown' Documents
 Authors@R: c(
@@ -31,3 +31,12 @@ URL: https://github.com/kamapu/yamlme,
 BugReports: https://github.com/kamapu/yamlme/issues
 VignetteBuilder: knitr
 RoxygenNote: 7.2.1
+collate:
+  'imports.R'
+  'classes.R'
+  'as.R'
+  'print.R'
+  'read_rmd.R'
+  'render_rmd.R'
+  'update.R'
+  'write_rmd.R'

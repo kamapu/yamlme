@@ -61,7 +61,7 @@ objects are displayed in the console.</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for rmd_doc</span></span>
-<span><span class="fu">print</span><span class="op">(</span><span class="va">x</span>, maxlines <span class="op">=</span> <span class="fl">15</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">print</span><span class="op">(</span><span class="va">x</span>, maxlines <span class="op">=</span> <span class="fl">10</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -88,34 +88,64 @@ display. Longer documents will be truncated.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## Create a new document</span></span></span>
-<span class="r-in"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="write_rmd.html">write_rmd</a></span><span class="op">(</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Document without header</span></span></span>
+<span class="r-in"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_rmd.html">read_rmd</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/find.package.html" class="external-link">path.package</a></span><span class="op">(</span><span class="st">"yamlme"</span><span class="op">)</span>, <span class="st">"taxlistjourney.Rmd"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  skip_head <span class="op">=</span> <span class="cn">TRUE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">my_document</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> # No header in this document!</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> After a long review process, where a lot of improvements have been implemented,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> the package [`taxlist`](https://docs.ropensci.org/taxlist/) managed to be</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> accepted in [**rOpenSci**](https://ropensci.org/).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> The package `taxllist` handles taxonomic lists as **S4** objects in</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [**R**](https://www.r-project.org/).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Such objects can be used as modules within data sets of biodiversity records as</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> in the package [`vegtable`](https://github.com/kamapu/vegtable).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> In a brief talk a summary of the experiences during the process of submission to</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [...truncated]</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Add header using update</span></span></span>
+<span class="r-in"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="update.html">update</a></span><span class="op">(</span><span class="va">my_document</span>,</span></span>
 <span class="r-in"><span>  title <span class="op">=</span> <span class="st">"A journey in rOpenSci"</span>,</span></span>
 <span class="r-in"><span>  author <span class="op">=</span> <span class="st">"Miguel Alvarez"</span>,</span></span>
-<span class="r-in"><span>  output <span class="op">=</span> <span class="st">"html_document"</span>,</span></span>
-<span class="r-in"><span>  body <span class="op">=</span> <span class="fu"><a href="read_rmd.html">read_rmd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    <span class="fu"><a href="https://rdrr.io/r/base/find.package.html" class="external-link">path.package</a></span><span class="op">(</span><span class="st">"yamlme"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>    <span class="st">"taxlistjourney.Rmd"</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  output <span class="op">=</span> <span class="st">"html_document"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> The yaml-header will not be imported by this function. Use 'update()' to re-write the header.</span>
 <span class="r-in"><span><span class="va">my_document</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> title: A journey in rOpenSci</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> author: Miguel Alvarez</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> output: html_document</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> list()# document imported by 'read_rmd'</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> c("\n", "After a long review process, where a lot of improvements have been implemented,\n", "the package [`taxlist`](https://docs.ropensci.org/taxlist/) managed to be\n", "accepted in [**rOpenSci**](https://ropensci.org/).\n", "The package `taxllist` handles taxonomic lists as **S4** objects in\n", "[**R**](https://www.r-project.org/).\n", "Such objects can be used as modules within data sets of biodiversity records as\n", "in the package [`vegtable`](https://github.com/kamapu/vegtable).\n", "\n", </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> "In a brief talk a summary of the experiences during the process of submission to\n", "**rOpenSci** was presented in the context of the conference [**LatinR\n", "2020**](https://latin-r.com/en).\n", "Here you can access to the\n", "[slides](https://kamapu.github.io/documents/Alvarez2020.pdf) and the\n", "[video](https://www.youtube.com/watch?v=NDB4s8N2fTw) of the presentation.\n", "\n", "[![](http://img.youtube.com/vi/NDB4s8N2fTw/0.jpg)](http://www.youtube.com/watch?v=NDB4s8N2fTw \"\")\n")</span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="co">## Render the document</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="render_rmd.html">render_rmd</a></span><span class="op">(</span><span class="va">my_document</span>, <span class="st">"taxlistjourney"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> After a long review process, where a lot of improvements have been implemented,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> the package [`taxlist`](https://docs.ropensci.org/taxlist/) managed to be</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> accepted in [**rOpenSci**](https://ropensci.org/).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> The package `taxllist` handles taxonomic lists as **S4** objects in</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [**R**](https://www.r-project.org/).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Such objects can be used as modules within data sets of biodiversity records as</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> in the package [`vegtable`](https://github.com/kamapu/vegtable).</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> In a brief talk a summary of the experiences during the process of submission to</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [...truncated]</span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Header only</span></span></span>
+<span class="r-in"><span><span class="va">my_document</span><span class="op">$</span><span class="va">body</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span></span>
+<span class="r-in"><span><span class="va">my_document</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> title: A journey in rOpenSci</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> author: Miguel Alvarez</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> output: html_document</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

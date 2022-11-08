@@ -75,7 +75,7 @@
                         <h4 data-toc-skip class="author">Miguel
 Alvarez</h4>
             
-            <h4 data-toc-skip class="date">2022-11-04</h4>
+            <h4 data-toc-skip class="date">2022-11-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/kamapu/yamlme/blob/HEAD/vignettes/yamlme-intro.Rmd" class="external-link"><code>vignettes/yamlme-intro.Rmd</code></a></small>
       <div class="d-none name"><code>yamlme-intro.Rmd</code></div>
@@ -86,10 +86,10 @@ Alvarez</h4>
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>The package <code>yamlme</code> targets to write yaml-heads and even
-full r-markdown documents from plain R codes. The tasks of this package
-are the automatic generation of reports from R sessions as well as
-producing templates that can be shared as R-functions.</p>
+<p>The package <code>yamlme</code> targets to produce R-markdown
+documents from plain R code. The tasks of this package are the automatic
+generation of reports from R sessions as well as producing templates
+that can be shared as functions or <code>rmd_doc</code> objects.</p>
 </div>
 <div class="section level2">
 <h2 id="installing-yamlme">Installing yamlme<a class="anchor" aria-label="anchor" href="#installing-yamlme"></a>
@@ -99,153 +99,129 @@ you can use the package <code>devtools</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"kamapu/yamlme"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p>To start a new session, load the package:</p>
+<p>Load the package after you start a new session.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/kamapu/yamlme" class="external-link">yamlme</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="writting-yaml-headers">Writting yaml headers<a class="anchor" aria-label="anchor" href="#writting-yaml-headers"></a>
+<h2 id="writting-r-markdown-documents">Writting R-markdown documents<a class="anchor" aria-label="anchor" href="#writting-r-markdown-documents"></a>
 </h2>
-<p>Several internal funcions and classes are implemented in this
-package, while the only visible result will be produced by the function
-<code><a href="../reference/write_rmd.html">write_rmd()</a></code>. Each entry in the yaml head can be provided as
-custom argument in this function, where at the moment four different
-categories are defined.</p>
-<p>A vector of lentght 1 is the basing entry for a head, for
-instance:</p>
+<p>This package uses functions of <a href="http://biostat.app.vumc.org/wiki/Main/YamlR" class="external-link"><code>yaml</code></a>
+for reading and writing yaml-headers. In <code>yamlme</code>, R-markdown
+documents can be created from lists, for instance:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/write_rmd.html">write_rmd</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"My first document"</span><span class="op">)</span></span>
-<span><span class="va">my_document</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"My first document"</span><span class="op">)</span></span>
+<span><span class="fu">as</span><span class="op">(</span><span class="va">my_document</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## ---</span></span>
 <span><span class="co">## title: My first document</span></span>
-<span><span class="co">## </span></span>
 <span><span class="co">## ---</span></span></code></pre>
 <p>Some applications may also require a description (or abstract) as in
 the case of documents rendered by <code>distill</code>. To add a
-description in post you start with a vertical line as first element in
-the vector.</p>
+description you need to collapse lines into a single string (character
+value) including line breaks. The description will start with a vertical
+line in the yaml header.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/write_rmd.html">write_rmd</a></span><span class="op">(</span>description <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"|"</span>,</span>
-<span>                <span class="st">"This text starts with a vertical line"</span>,</span>
-<span>                <span class="st">"and will be thus used as a description"</span>,</span>
-<span>                <span class="st">"in the head."</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">my_document</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>description <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>            <span class="st">"This text starts with a vertical line"</span>,</span>
+<span>            <span class="st">"and will be thus used as a description"</span>,</span>
+<span>            <span class="st">"in the head."</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">as</span><span class="op">(</span><span class="va">my_document</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## ---</span></span>
-<span><span class="co">## description: |</span></span>
+<span><span class="co">## description: |-</span></span>
 <span><span class="co">##   This text starts with a vertical line</span></span>
 <span><span class="co">##   and will be thus used as a description</span></span>
 <span><span class="co">##   in the head.</span></span>
-<span><span class="co">## </span></span>
 <span><span class="co">## ---</span></span></code></pre>
-<p>A similar way is applied in the case of the entries for the element
-<code>vignette</code> in a vignette document, hier for convenience the
-title is first assigned to a character value to be recycled in the
-header.</p>
+<p>You can use character vectors to produce sequences in the yaml
+header, as sometimes required for PDF documents.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">the_title</span> <span class="op">&lt;-</span> <span class="st">"Introduction to this package"</span></span>
-<span></span>
-<span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/write_rmd.html">write_rmd</a></span><span class="op">(</span></span>
-<span>        title <span class="op">=</span> <span class="va">the_title</span>,</span>
-<span>        vignette <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"&gt;"</span>,</span>
-<span>                <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"%\\VignetteIndexEntry{"</span>, <span class="va">the_title</span>, <span class="st">"}"</span><span class="op">)</span>,</span>
-<span>                <span class="st">"%\\VignetteEngine{knitr::rmarkdown}"</span>,</span>
-<span>                <span class="st">"%\\VignetteEncoding{UTF-8}"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">my_document</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"header-includes"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>        <span class="st">"\\usepackage{titling}"</span>,</span>
+<span>        <span class="st">"\\pretitle{\\begin{flushleft}\\LARGE\\textbf}"</span>,</span>
+<span>        <span class="st">"\\posttitle{\\end{flushleft}}"</span>,</span>
+<span>        <span class="st">"\\sffamily"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">as</span><span class="op">(</span><span class="va">my_document</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## ---</span></span>
-<span><span class="co">## title: Introduction to this package</span></span>
-<span><span class="co">## vignette: &gt;</span></span>
-<span><span class="co">##   %\VignetteIndexEntry{Introduction to this package}</span></span>
-<span><span class="co">##   %\VignetteEngine{knitr::rmarkdown}</span></span>
-<span><span class="co">##   %\VignetteEncoding{UTF-8}</span></span>
-<span><span class="co">## </span></span>
+<span><span class="co">## header-includes:</span></span>
+<span><span class="co">## - \usepackage{titling}</span></span>
+<span><span class="co">## - \pretitle{\begin{flushleft}\LARGE\textbf}</span></span>
+<span><span class="co">## - \posttitle{\end{flushleft}}</span></span>
+<span><span class="co">## - \sffamily</span></span>
 <span><span class="co">## ---</span></span></code></pre>
-<p>A further class is used for entries starting with a dash symbol.</p>
+<p>List embedded into lists can be conveniently used to produce more
+complex maps for yaml headers in Rmarkdown documents.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/write_rmd.html">write_rmd</a></span><span class="op">(</span>author<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"- name: Miguel Alvarez"</span>,</span>
-<span>                <span class="st">"url: https://kamapu.github.io/"</span>,</span>
-<span>                <span class="st">"- name: Bisrat H. Gebrekhidan"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">my_document</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>output <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>pdf_document <span class="op">=</span> <span class="st">"default"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">as</span><span class="op">(</span><span class="va">my_document</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## ---</span></span>
-<span><span class="co">## author: </span></span>
-<span><span class="co">##   - name: Miguel Alvarez</span></span>
-<span><span class="co">##     url: https://kamapu.github.io/</span></span>
-<span><span class="co">##   - name: Bisrat H. Gebrekhidan</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## ---</span></span></code></pre>
-<p>And finaly, nested entries can be provided as lists.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/write_rmd.html">write_rmd</a></span><span class="op">(</span>output<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>pdf_document<span class="op">=</span><span class="st">"default"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">my_document</span></span></code></pre></div>
-<pre><code><span><span class="co">## ---</span></span>
-<span><span class="co">## output: default</span></span>
+<span><span class="co">## output:</span></span>
 <span><span class="co">##   pdf_document: default</span></span>
-<span><span class="co">## </span></span>
 <span><span class="co">## ---</span></span></code></pre>
+<p>The following is a more complex map using embedded lists.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    author <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>            name <span class="op">=</span> <span class="st">"Miguel Alvarez"</span>,</span>
+<span>            url <span class="op">=</span> <span class="st">"https://kamapu.github.io/"</span><span class="op">)</span>,</span>
+<span>        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>            name <span class="op">=</span> <span class="st">"Bisrat H. Gebrekhidan"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">as</span><span class="op">(</span><span class="va">my_document</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## ---</span></span>
+<span><span class="co">## author:</span></span>
+<span><span class="co">## - name: Miguel Alvarez</span></span>
+<span><span class="co">##   url: https://kamapu.github.io/</span></span>
+<span><span class="co">## - name: Bisrat H. Gebrekhidan</span></span>
+<span><span class="co">## ---</span></span></code></pre>
+<p>To know the representation of a specific yaml map in Rmarkdown
+documents, you can read Rmd files using the function
+<code><a href="../reference/read_rmd.html">read_rmd()</a></code>. Also consider a visit to the R yaml homepage <a href="https://biostat.app.vumc.org/wiki/Main/YamlR" class="external-link">here</a>.</p>
 </div>
 <div class="section level2">
-<h2 id="a-full-example">A full example<a class="anchor" aria-label="anchor" href="#a-full-example"></a>
+<h2 id="case-example">Case example<a class="anchor" aria-label="anchor" href="#case-example"></a>
 </h2>
-<p>With the function <code><a href="../reference/write_rmd.html">write_rmd()</a></code> you can create a full
-r-markdown document. You cam either assign the result to an object or
-write it in a file, or both. For it, the parameters
-<code>filename</code> (name and path for the output file),
-<code>body</code> (body of the document as caracter vector), and
-<code>append</code> (appended blocks in yaml-head, for instance
-comments) are suitable.</p>
+<p>Here there is an example of a full Rmarkdown document.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/write_rmd.html">write_rmd</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Mi First Document"</span>, author <span class="op">=</span> <span class="st">"My Name"</span>,</span>
-<span>        output <span class="op">=</span> <span class="st">"html_document"</span>, append <span class="op">=</span> <span class="st">"# This is a comment in head"</span>,</span>
-<span>        body <span class="op">=</span> <span class="fu"><a href="../reference/read_rmd.html">txt_body</a></span><span class="op">(</span></span>
-<span>                <span class="st">"# Starting a working day"</span>,</span>
-<span>                <span class="st">""</span>,</span>
-<span>                <span class="st">"At the beginning of every day I will do:"</span>,</span>
-<span>                <span class="st">""</span>,</span>
-<span>                <span class="st">"- Say everyone \"Good morning!\""</span>,</span>
-<span>                <span class="st">"- Start the coffe mashine"</span>,</span>
-<span>                <span class="st">"- Start the computer"</span>,</span>
-<span>                <span class="st">"- Read mails"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">my_document</span></span></code></pre></div>
-<pre><code><span><span class="co">## ---</span></span>
-<span><span class="co">## title: Mi First Document</span></span>
-<span><span class="co">## author: My Name</span></span>
-<span><span class="co">## output: html_document</span></span>
-<span><span class="co">## # This is a comment in head</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## ---</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## # Starting a working day</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## At the beginning of every day I will do:</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## - Say everyone "Good morning!"</span></span>
-<span><span class="co">## - Start the coffe mashine</span></span>
-<span><span class="co">## - Start the computer</span></span>
-<span><span class="co">## - Read mails</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Mi First Document"</span>,</span>
+<span>    author <span class="op">=</span> <span class="st">"My Name"</span>,</span>
+<span>    output <span class="op">=</span> <span class="st">"html_document"</span>,</span>
+<span>    body <span class="op">=</span> <span class="fu"><a href="../reference/read_rmd.html">txt_body</a></span><span class="op">(</span></span>
+<span>        <span class="st">"# Starting a working day"</span>,</span>
+<span>        <span class="st">""</span>,</span>
+<span>        <span class="st">"At the beginning of every day I will do:"</span>,</span>
+<span>        <span class="st">""</span>,</span>
+<span>        <span class="st">"- Say everyone \"Good morning!\""</span>,</span>
+<span>        <span class="st">"- Start the coffe mashine"</span>,</span>
+<span>        <span class="st">"- Start the computer"</span>,</span>
+<span>        <span class="st">"- Read mails"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu">as</span><span class="op">(</span><span class="va">my_document</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span></code></pre></div>
 <p>In this case we can render the document directly from the resulting
 object.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/render_rmd.html">render_rmd</a></span><span class="op">(</span>input <span class="op">=</span> <span class="va">my_document</span>, output_file <span class="op">=</span> <span class="st">"my_document"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/render_rmd.html">render_rmd</a></span><span class="op">(</span>input <span class="op">=</span> <span class="va">my_document</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/browseURL.html" class="external-link">browseURL</a></span><span class="op">(</span><span class="st">"my_document.html"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="using-objects-as-template">Using objects as template<a class="anchor" aria-label="anchor" href="#using-objects-as-template"></a>
 </h2>
 <p>The function <code><a href="../reference/update.html">update()</a></code> can be used to modify settings and
 content in documents written by <code><a href="../reference/write_rmd.html">write_rmd()</a></code>.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_template</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/write_rmd.html">write_rmd</a></span><span class="op">(</span></span>
-<span>        title <span class="op">=</span> <span class="st">"Example HTML document"</span>,</span>
-<span>        author <span class="op">=</span> <span class="st">"My Self"</span>,</span>
-<span>        output <span class="op">=</span> <span class="st">"html_document"</span>,</span>
-<span>        body <span class="op">=</span> <span class="fu"><a href="../reference/read_rmd.html">txt_body</a></span><span class="op">(</span></span>
-<span>                <span class="st">"# Introduction"</span>,</span>
-<span>                <span class="st">""</span>,</span>
-<span>                <span class="st">"This is just an example."</span><span class="op">)</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_template</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Example HTML document"</span>,</span>
+<span>    author <span class="op">=</span> <span class="st">"My Self"</span>,</span>
+<span>    output <span class="op">=</span> <span class="st">"html_document"</span>,</span>
+<span>    body <span class="op">=</span> <span class="fu"><a href="../reference/read_rmd.html">txt_body</a></span><span class="op">(</span></span>
+<span>      <span class="st">"# Introduction"</span>,</span>
+<span>      <span class="st">""</span>,</span>
+<span>      <span class="st">"This is just an example."</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">my_template</span> <span class="op">&lt;-</span> <span class="fu">as</span><span class="op">(</span><span class="va">my_template</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span>
 <span><span class="va">my_template</span></span></code></pre></div>
 <pre><code><span><span class="co">## ---</span></span>
 <span><span class="co">## title: Example HTML document</span></span>
 <span><span class="co">## author: My Self</span></span>
 <span><span class="co">## output: html_document</span></span>
-<span><span class="co">## </span></span>
 <span><span class="co">## ---</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## # Introduction</span></span>
@@ -253,17 +229,15 @@ content in documents written by <code><a href="../reference/write_rmd.html">writ
 <span><span class="co">## This is just an example.</span></span></code></pre>
 <p>We can also modify the template to adapt the output or the template
 of the document.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_template</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/update.html">update</a></span><span class="op">(</span><span class="va">my_template</span>, </span>
 <span>        title <span class="op">=</span> <span class="st">"Example PDF document"</span>,</span>
-<span>        output <span class="op">=</span> <span class="st">"pdf_document"</span>,</span>
-<span>        append <span class="op">=</span> <span class="st">"# this is a modified version"</span><span class="op">)</span></span>
+<span>        output <span class="op">=</span> <span class="st">"pdf_document"</span><span class="op">)</span></span>
 <span><span class="va">my_template</span></span></code></pre></div>
 <pre><code><span><span class="co">## ---</span></span>
 <span><span class="co">## title: Example PDF document</span></span>
 <span><span class="co">## author: My Self</span></span>
 <span><span class="co">## output: pdf_document</span></span>
-<span><span class="co">## # this is a modified version</span></span>
 <span><span class="co">## ---</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## # Introduction</span></span>

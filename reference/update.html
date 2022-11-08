@@ -64,7 +64,7 @@ respective parameter.</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for rmd_doc</span></span>
-<span><span class="fu">update</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span>, <span class="va">append</span>, <span class="va">body</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">update</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -77,38 +77,44 @@ respective parameter.</p>
 <dd><p>Named arguments to be inserted in the YAML header (passed to
 <code><a href="write_rmd.html">write_rmd()</a></code>).</p></dd>
 
-
-<dt>append</dt>
-<dd><p>A piece of code to be appended in the header (passed to
-<code><a href="write_rmd.html">write_rmd()</a></code>).</p></dd>
-
-
-<dt>body</dt>
-<dd><p>The content of the document that will be inserted after the
-header (passed to
-<code><a href="write_rmd.html">write_rmd()</a></code>).</p></dd>
-
 </dl></div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="write_rmd.html">write_rmd</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  title <span class="op">=</span> <span class="st">"Sample Document"</span>, author <span class="op">=</span> <span class="st">"Miguel Alavarez"</span>,</span></span>
-<span class="r-in"><span>  output <span class="op">=</span> <span class="st">"html_document"</span>,</span></span>
-<span class="r-in"><span>  body <span class="op">=</span> <span class="fu"><a href="read_rmd.html">txt_body</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>    <span class="st">"# Intro"</span>,</span></span>
-<span class="r-in"><span>    <span class="st">""</span>,</span></span>
-<span class="r-in"><span>    <span class="st">"This is just an example."</span></span></span>
-<span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co">## Create a document from a list</span></span></span>
+<span class="r-in"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    title <span class="op">=</span> <span class="st">"Sample Document"</span>,</span></span>
+<span class="r-in"><span>    author <span class="op">=</span> <span class="st">"Miguel Alavarez"</span>,</span></span>
+<span class="r-in"><span>    output <span class="op">=</span> <span class="st">"html_document"</span>,</span></span>
+<span class="r-in"><span>    body <span class="op">=</span> <span class="fu"><a href="read_rmd.html">txt_body</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>        <span class="st">"# Intro"</span>,</span></span>
+<span class="r-in"><span>        <span class="st">""</span>,</span></span>
+<span class="r-in"><span>        <span class="st">"This is just an example."</span></span></span>
+<span class="r-in"><span>    <span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu">as</span><span class="op">(</span><span class="va">my_document</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">my_document</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> title: Sample Document</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> author: Miguel Alavarez</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> output: html_document</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> # Intro</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> This is just an example.</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Change output format</span></span></span>
-<span class="r-in"><span><span class="va">my_document_v2</span> <span class="op">&lt;-</span> <span class="fu">update</span><span class="op">(</span><span class="va">my_document</span>, output <span class="op">=</span> <span class="st">"pdf_document"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">my_document_v2</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu">update</span><span class="op">(</span><span class="va">my_document</span>, output <span class="op">=</span> <span class="st">"pdf_document"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">my_document</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> title: Sample Document</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> author: Miguel Alavarez</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> output: pdf_document</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> # Intro</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> This is just an example.</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

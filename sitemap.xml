@@ -22,13 +22,16 @@
     <loc>https://kamapu.github.io/yamlme/news/index.html</loc>
   </url>
   <url>
-    <loc>https://kamapu.github.io/yamlme/reference/assign_class.html</loc>
+    <loc>https://kamapu.github.io/yamlme/reference/coerce-methods.html</loc>
   </url>
   <url>
     <loc>https://kamapu.github.io/yamlme/reference/index.html</loc>
   </url>
   <url>
     <loc>https://kamapu.github.io/yamlme/reference/print.html</loc>
+  </url>
+  <url>
+    <loc>https://kamapu.github.io/yamlme/reference/print2text.html</loc>
   </url>
   <url>
     <loc>https://kamapu.github.io/yamlme/reference/read_rmd.html</loc>
@@ -44,8 +47,5 @@
   </url>
   <url>
     <loc>https://kamapu.github.io/yamlme/reference/write_rmd.html</loc>
-  </url>
-  <url>
-    <loc>https://kamapu.github.io/yamlme/reference/write_yaml.html</loc>
   </url>
 </urlset>

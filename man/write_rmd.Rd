@@ -17,8 +17,8 @@ header is missing, \code{write_rmd()} will fail with an error message.}
 \item{...}{Further arguments passed among methods (not yet used).}
 
 \item{filename}{A character value with the name of the file to be written.
-If not included, the extension *.Rmd will be appended to this name.
-If missing, no file will be written by this function.}
+It is not necessary to include the extension *.Rmd in this argument.
+If missing, the function will use the name of the input object.}
 }
 \value{
 A character vector of class \code{rmd_doc} and, if argument set for parameter

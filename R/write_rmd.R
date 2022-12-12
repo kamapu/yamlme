@@ -12,8 +12,8 @@
 #' @param object [rmd_doc-class] object used to write an Rmarkdown file. If
 #'     header is missing, `write_rmd()` will fail with an error message.
 #' @param filename A character value with the name of the file to be written.
-#'     If not included, the extension *.Rmd will be appended to this name.
-#'     If missing, no file will be written by this function.
+#'     It is not necessary to include the extension *.Rmd in this argument.
+#'     If missing, the function will use the name of the input object.
 #' @param ... Further arguments passed among methods (not yet used).
 #'
 #' @return
@@ -47,6 +47,9 @@ write_rmd <- function(object, ...) {
 #' @method write_rmd rmd_doc
 #' @export
 write_rmd.rmd_doc <- function(object, filename, ...) {
+  if (missing(filename)) {
+    filename <- paste0(deparse(substitute(object)))
+  }
   filename <- paste0(file_path_sans_ext(filename), ".Rmd")
   con <- file(filename, "wb")
   writeBin(

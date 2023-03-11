@@ -12,10 +12,10 @@
 ^examples$
 ^lab$
 ^LICENSE$
-^\.travis\.yml$
 ^codecov\.yml$
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^tests$

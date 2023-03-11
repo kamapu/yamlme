@@ -21,7 +21,6 @@ Description: Setting layout through 'YAML' headers in 'R-Markdown' documents,
     Functions and methods may summarize 'R' objects in automatic reports, for
     instance check-lists and further reports applied to the packages 'taxlist'
     and 'vegtable'.
-LazyData: true
 SystemRequirements: pandoc (>= 1.14) - http://pandoc.org
 Roxygen: list(markdown = TRUE)
 License: GPL (>= 2)

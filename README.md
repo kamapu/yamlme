@@ -1,20 +1,21 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
 <!-- Use snippet 'render_markdown' for it -->
 
 # yamlme
 
 <!-- badges: start -->
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/yamlme)](https://cran.r-project.org/package=yamlme)
+[![cran
+checks](https://badges.cranchecks.info/worst/yamlme.svg)](https://cran.r-project.org/web/checks/check_results_yamlme.html)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/yamlme)](https://cran.r-project.org/package=yamlme)
 [![DOI](https://zenodo.org/badge/297735831.svg)](https://zenodo.org/badge/latestdoi/297735831)
 <br>
 [![R-CMD-check](https://github.com/kamapu/yamlme/workflows/R-CMD-check/badge.svg)](https://github.com/kamapu/yamlme/actions)
 [![Codecov test
 coverage](https://codecov.io/gh/kamapu/yamlme/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/yamlme?branch=master)
 <br>
-[![CRAN\_downloads](http://cranlogs.r-pkg.org/badges/yamlme)](https://cran.r-project.org/package=yamlme)
+[![CRAN_downloads](http://cranlogs.r-pkg.org/badges/yamlme)](https://cran.r-project.org/package=yamlme)
 [![total
 downloads](http://cranlogs.r-pkg.org/badges/grand-total/yamlme)](https://cran.r-project.org/package=yamlme)
 <!-- badges: end -->
@@ -48,18 +49,20 @@ This package aims to save documents with their respective settings
 
 ``` r
 my_document <- list(
-    title = "Mi First Document",
-    author = "My Name",
-    output = "html_document",
-    body = txt_body(
-        "# Starting a working day",
-        "",
-        "At the beginning of every day I will do:",
-        "",
-        "- Say everyone \"Good morning!\"",
-        "- Start the coffe mashine",
-        "- Start the computer",
-        "- Read mails"))
+  title = "Mi First Document",
+  author = "My Name",
+  output = "html_document",
+  body = txt_body(
+    "# Starting a working day",
+    "",
+    "At the beginning of every day I will do:",
+    "",
+    "- Say everyone \"Good morning!\"",
+    "- Start the coffe mashine",
+    "- Start the computer",
+    "- Read mails"
+  )
+)
 my_document <- as(my_document, "rmd_doc")
 my_document
 #> ---

@@ -14,10 +14,11 @@ print2text <- function(x) {
       collapse = ""
     )
   } else {
-    x$header <- paste0(c(
-      "---\n", "# No header in this document!\n", "---\n\n"
-    ),
-    collapse = ""
+    x$header <- paste0(
+      c(
+        "---\n", "# No header in this document!\n", "---\n\n"
+      ),
+      collapse = ""
     )
   }
   if ("body" %in% names(x)) {

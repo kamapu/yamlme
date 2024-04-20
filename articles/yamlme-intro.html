@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">yamlme</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,9 +122,10 @@ value) including line breaks. The description will start with a vertical
 line in the yaml header.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>description <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>            <span class="st">"This text starts with a vertical line"</span>,</span>
-<span>            <span class="st">"and will be thus used as a description"</span>,</span>
-<span>            <span class="st">"in the head."</span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="st">"This text starts with a vertical line"</span>,</span>
+<span>  <span class="st">"and will be thus used as a description"</span>,</span>
+<span>  <span class="st">"in the head."</span></span>
+<span><span class="op">)</span>, collapse <span class="op">=</span> <span class="st">"\n"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">as</span><span class="op">(</span><span class="va">my_document</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## ---</span></span>
 <span><span class="co">## description: |-</span></span>
@@ -136,10 +137,11 @@ line in the yaml header.</p>
 header, as sometimes required for PDF documents.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"header-includes"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
-<span>        <span class="st">"\\usepackage{titling}"</span>,</span>
-<span>        <span class="st">"\\pretitle{\\begin{flushleft}\\LARGE\\textbf}"</span>,</span>
-<span>        <span class="st">"\\posttitle{\\end{flushleft}}"</span>,</span>
-<span>        <span class="st">"\\sffamily"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="st">"\\usepackage{titling}"</span>,</span>
+<span>  <span class="st">"\\pretitle{\\begin{flushleft}\\LARGE\\textbf}"</span>,</span>
+<span>  <span class="st">"\\posttitle{\\end{flushleft}}"</span>,</span>
+<span>  <span class="st">"\\sffamily"</span></span>
+<span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">as</span><span class="op">(</span><span class="va">my_document</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## ---</span></span>
 <span><span class="co">## header-includes:</span></span>
@@ -160,12 +162,16 @@ complex maps for yaml headers in Rmarkdown documents.</p>
 <p>The following is a more complex map using embedded lists.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    author <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>            name <span class="op">=</span> <span class="st">"Miguel Alvarez"</span>,</span>
-<span>            url <span class="op">=</span> <span class="st">"https://kamapu.github.io/"</span><span class="op">)</span>,</span>
-<span>        <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>            name <span class="op">=</span> <span class="st">"Bisrat H. Gebrekhidan"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span>  author <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      name <span class="op">=</span> <span class="st">"Miguel Alvarez"</span>,</span>
+<span>      url <span class="op">=</span> <span class="st">"https://kamapu.github.io/"</span></span>
+<span>    <span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>      name <span class="op">=</span> <span class="st">"Bisrat H. Gebrekhidan"</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span><span class="fu">as</span><span class="op">(</span><span class="va">my_document</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## ---</span></span>
 <span><span class="co">## author:</span></span>
@@ -183,18 +189,20 @@ documents, you can read Rmd files using the function
 <p>Here there is an example of a full Rmarkdown document.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Mi First Document"</span>,</span>
-<span>    author <span class="op">=</span> <span class="st">"My Name"</span>,</span>
-<span>    output <span class="op">=</span> <span class="st">"html_document"</span>,</span>
-<span>    body <span class="op">=</span> <span class="fu"><a href="../reference/read_rmd.html">txt_body</a></span><span class="op">(</span></span>
-<span>        <span class="st">"# Starting a working day"</span>,</span>
-<span>        <span class="st">""</span>,</span>
-<span>        <span class="st">"At the beginning of every day I will do:"</span>,</span>
-<span>        <span class="st">""</span>,</span>
-<span>        <span class="st">"- Say everyone \"Good morning!\""</span>,</span>
-<span>        <span class="st">"- Start the coffe mashine"</span>,</span>
-<span>        <span class="st">"- Start the computer"</span>,</span>
-<span>        <span class="st">"- Read mails"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  title <span class="op">=</span> <span class="st">"Mi First Document"</span>,</span>
+<span>  author <span class="op">=</span> <span class="st">"My Name"</span>,</span>
+<span>  output <span class="op">=</span> <span class="st">"html_document"</span>,</span>
+<span>  body <span class="op">=</span> <span class="fu"><a href="../reference/read_rmd.html">txt_body</a></span><span class="op">(</span></span>
+<span>    <span class="st">"# Starting a working day"</span>,</span>
+<span>    <span class="st">""</span>,</span>
+<span>    <span class="st">"At the beginning of every day I will do:"</span>,</span>
+<span>    <span class="st">""</span>,</span>
+<span>    <span class="st">"- Say everyone \"Good morning!\""</span>,</span>
+<span>    <span class="st">"- Start the coffe mashine"</span>,</span>
+<span>    <span class="st">"- Start the computer"</span>,</span>
+<span>    <span class="st">"- Read mails"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu">as</span><span class="op">(</span><span class="va">my_document</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span></code></pre></div>
 <p>In this case we can render the document directly from the resulting
 object.</p>
@@ -209,13 +217,15 @@ object.</p>
 content in documents written by <code><a href="../reference/write_rmd.html">write_rmd()</a></code>.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_template</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Example HTML document"</span>,</span>
-<span>    author <span class="op">=</span> <span class="st">"My Self"</span>,</span>
-<span>    output <span class="op">=</span> <span class="st">"html_document"</span>,</span>
-<span>    body <span class="op">=</span> <span class="fu"><a href="../reference/read_rmd.html">txt_body</a></span><span class="op">(</span></span>
-<span>      <span class="st">"# Introduction"</span>,</span>
-<span>      <span class="st">""</span>,</span>
-<span>      <span class="st">"This is just an example."</span><span class="op">)</span><span class="op">)</span></span>
+<span>  title <span class="op">=</span> <span class="st">"Example HTML document"</span>,</span>
+<span>  author <span class="op">=</span> <span class="st">"My Self"</span>,</span>
+<span>  output <span class="op">=</span> <span class="st">"html_document"</span>,</span>
+<span>  body <span class="op">=</span> <span class="fu"><a href="../reference/read_rmd.html">txt_body</a></span><span class="op">(</span></span>
+<span>    <span class="st">"# Introduction"</span>,</span>
+<span>    <span class="st">""</span>,</span>
+<span>    <span class="st">"This is just an example."</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">my_template</span> <span class="op">&lt;-</span> <span class="fu">as</span><span class="op">(</span><span class="va">my_template</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span>
 <span><span class="va">my_template</span></span></code></pre></div>
 <pre><code><span><span class="co">## ---</span></span>
@@ -230,9 +240,10 @@ content in documents written by <code><a href="../reference/write_rmd.html">writ
 <p>We can also modify the template to adapt the output or the template
 of the document.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_template</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/update.html">update</a></span><span class="op">(</span><span class="va">my_template</span>, </span>
-<span>        title <span class="op">=</span> <span class="st">"Example PDF document"</span>,</span>
-<span>        output <span class="op">=</span> <span class="st">"pdf_document"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">my_template</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/update.html">update</a></span><span class="op">(</span><span class="va">my_template</span>,</span>
+<span>  title <span class="op">=</span> <span class="st">"Example PDF document"</span>,</span>
+<span>  output <span class="op">=</span> <span class="st">"pdf_document"</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">my_template</span></span></code></pre></div>
 <pre><code><span><span class="co">## ---</span></span>
 <span><span class="co">## title: Example PDF document</span></span>

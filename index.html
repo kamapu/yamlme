@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">yamlme</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2.9001</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,18 +91,20 @@
 <p>This package aims to save documents with their respective settings (yaml-head) in R-objects.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Mi First Document"</span>,</span>
-<span>    author <span class="op">=</span> <span class="st">"My Name"</span>,</span>
-<span>    output <span class="op">=</span> <span class="st">"html_document"</span>,</span>
-<span>    body <span class="op">=</span> <span class="fu"><a href="reference/read_rmd.html">txt_body</a></span><span class="op">(</span></span>
-<span>        <span class="st">"# Starting a working day"</span>,</span>
-<span>        <span class="st">""</span>,</span>
-<span>        <span class="st">"At the beginning of every day I will do:"</span>,</span>
-<span>        <span class="st">""</span>,</span>
-<span>        <span class="st">"- Say everyone \"Good morning!\""</span>,</span>
-<span>        <span class="st">"- Start the coffe mashine"</span>,</span>
-<span>        <span class="st">"- Start the computer"</span>,</span>
-<span>        <span class="st">"- Read mails"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  title <span class="op">=</span> <span class="st">"Mi First Document"</span>,</span>
+<span>  author <span class="op">=</span> <span class="st">"My Name"</span>,</span>
+<span>  output <span class="op">=</span> <span class="st">"html_document"</span>,</span>
+<span>  body <span class="op">=</span> <span class="fu"><a href="reference/read_rmd.html">txt_body</a></span><span class="op">(</span></span>
+<span>    <span class="st">"# Starting a working day"</span>,</span>
+<span>    <span class="st">""</span>,</span>
+<span>    <span class="st">"At the beginning of every day I will do:"</span>,</span>
+<span>    <span class="st">""</span>,</span>
+<span>    <span class="st">"- Say everyone \"Good morning!\""</span>,</span>
+<span>    <span class="st">"- Start the coffe mashine"</span>,</span>
+<span>    <span class="st">"- Start the computer"</span>,</span>
+<span>    <span class="st">"- Read mails"</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span><span class="va">my_document</span> <span class="op">&lt;-</span> <span class="fu">as</span><span class="op">(</span><span class="va">my_document</span>, <span class="st">"rmd_doc"</span><span class="op">)</span></span>
 <span><span class="va">my_document</span></span>
 <span><span class="co">#&gt; ---</span></span>
@@ -169,6 +171,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://cran.r-project.org/web/checks/check_results_yamlme.html" class="external-link"><img src="https://badges.cranchecks.info/worst/yamlme.svg" alt="cran checks"></a></li>
 <li><a href="https://cran.r-project.org/package=yamlme" class="external-link"><img src="http://www.r-pkg.org/badges/version/yamlme" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/297735831" class="external-link"><img src="https://zenodo.org/badge/297735831.svg" alt="DOI"></a></li>
 <li><a href="https://github.com/kamapu/yamlme/actions" class="external-link"><img src="https://github.com/kamapu/yamlme/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>

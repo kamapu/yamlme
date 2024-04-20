@@ -53,9 +53,10 @@ The description will start with a vertical line in the yaml header.
 
 ```{r}
 my_document <- list(description = paste0(c(
-            "This text starts with a vertical line",
-			"and will be thus used as a description",
-			"in the head."), collapse = "\n"))
+  "This text starts with a vertical line",
+  "and will be thus used as a description",
+  "in the head."
+), collapse = "\n"))
 as(my_document, "rmd_doc")
 ```
 
@@ -64,10 +65,11 @@ sometimes required for PDF documents.
 
 ```{r}
 my_document <- list("header-includes" = c(
-        "\\usepackage{titling}",
-        "\\pretitle{\\begin{flushleft}\\LARGE\\textbf}",
-        "\\posttitle{\\end{flushleft}}",
-        "\\sffamily"))
+  "\\usepackage{titling}",
+  "\\pretitle{\\begin{flushleft}\\LARGE\\textbf}",
+  "\\posttitle{\\end{flushleft}}",
+  "\\sffamily"
+))
 as(my_document, "rmd_doc")
 ```
 
@@ -83,12 +85,16 @@ The following is a more complex map using embedded lists.
 
 ```{r}
 my_document <- list(
-    author = list(
-        list(
-            name = "Miguel Alvarez",
-            url = "https://kamapu.github.io/"),
-        list(
-            name = "Bisrat H. Gebrekhidan")))
+  author = list(
+    list(
+      name = "Miguel Alvarez",
+      url = "https://kamapu.github.io/"
+    ),
+    list(
+      name = "Bisrat H. Gebrekhidan"
+    )
+  )
+)
 as(my_document, "rmd_doc")
 ```
 
@@ -103,18 +109,20 @@ Here there is an example of a full Rmarkdown document.
 
 ```{r}
 my_document <- list(
-    title = "Mi First Document",
-    author = "My Name",
-    output = "html_document",
-    body = txt_body(
-        "# Starting a working day",
-		"",
-		"At the beginning of every day I will do:",
-		"",
-		"- Say everyone \"Good morning!\"",
-		"- Start the coffe mashine",
-		"- Start the computer",
-		"- Read mails"))
+  title = "Mi First Document",
+  author = "My Name",
+  output = "html_document",
+  body = txt_body(
+    "# Starting a working day",
+    "",
+    "At the beginning of every day I will do:",
+    "",
+    "- Say everyone \"Good morning!\"",
+    "- Start the coffe mashine",
+    "- Start the computer",
+    "- Read mails"
+  )
+)
 my_document <- as(my_document, "rmd_doc")
 ```
 
@@ -132,13 +140,15 @@ written by `write_rmd()`.
 
 ```{r}
 my_template <- list(
-    title = "Example HTML document",
-	author = "My Self",
-	output = "html_document",
-	body = txt_body(
-      "# Introduction",
-      "",
-      "This is just an example."))
+  title = "Example HTML document",
+  author = "My Self",
+  output = "html_document",
+  body = txt_body(
+    "# Introduction",
+    "",
+    "This is just an example."
+  )
+)
 my_template <- as(my_template, "rmd_doc")
 my_template
 ```
@@ -147,8 +157,9 @@ We can also modify the template to adapt the output or the template of the
 document.
 
 ```{r}
-my_template <- update(my_template, 
-		title = "Example PDF document",
-		output = "pdf_document")
+my_template <- update(my_template,
+  title = "Example PDF document",
+  output = "pdf_document"
+)
 my_template
 ```

@@ -24,9 +24,9 @@ knitr::opts_chunk$set(
 <br>
 [![R-CMD-check](https://github.com/kamapu/yamlme/workflows/R-CMD-check/badge.svg)](https://github.com/kamapu/yamlme/actions)
 [![Codecov test coverage](https://codecov.io/gh/kamapu/yamlme/branch/master/graph/badge.svg)](https://codecov.io/gh/kamapu/yamlme?branch=master)
-<br>
 [![CRAN_downloads](http://cranlogs.r-pkg.org/badges/yamlme)](https://cran.r-project.org/package=yamlme)
 [![total downloads](http://cranlogs.r-pkg.org/badges/grand-total/yamlme)](https://cran.r-project.org/package=yamlme)
+[![R-CMD-check](https://github.com/kamapu/yamlme/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kamapu/yamlme/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Installing yamlme

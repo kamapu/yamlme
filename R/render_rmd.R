@@ -82,8 +82,10 @@ render_rmd.rmd_doc <- function(input, output_file, delete_rmd = TRUE, ...) {
   if (delete_rmd) {
     files_tmp <- files_tmp[!grepl(".Rmd", files_tmp, fixed = TRUE)]
   }
-  file.copy(
-    from = file.path(tempdir(), files_tmp), to = dirname(output_file),
-    overwrite = TRUE
-  )
+  if (dirname(output_file) != tempdir()) {
+    file.copy(
+      from = file.path(tempdir(), files_tmp), to = dirname(output_file),
+      overwrite = TRUE
+    )
+  }
 }

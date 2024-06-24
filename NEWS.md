@@ -1,10 +1,9 @@
-# yamlme 0.1.3
+# yamlme 0.2.0
 
 ### Bug Fixes
 
 - Function `render_rmd()` is now overwritten previous versions of rendered
   files.
-
 
 
 # yamlme 0.1.2

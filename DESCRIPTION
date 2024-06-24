@@ -1,5 +1,5 @@
 Package: yamlme
-Version: 0.1.2.9001
+Version: 0.1.3
 Encoding: UTF-8
 Title: Writing 'YAML' Headers for 'R-Markdown' Documents
 Authors@R: c(

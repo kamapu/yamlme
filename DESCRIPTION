@@ -15,7 +15,7 @@ Imports:
     yaml
 Suggests:
     knitr,
-    testthat
+    testthat (>= 3.0.0)
 Description: Setting layout through 'YAML' headers in 'R-Markdown' documents,
     enabling their automatic generation.
     Functions and methods may summarize 'R' objects in automatic reports, for
@@ -39,3 +39,4 @@ Collate:
   'render_rmd.R'
   'update.R'
   'write_rmd.R'
+Config/testthat/edition: 3
